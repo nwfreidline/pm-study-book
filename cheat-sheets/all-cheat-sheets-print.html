@@ -1,0 +1,3001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Cheat Sheets — Complete Collection</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#16a34a;
+  --accent-light:#dcfce7;--border:#e7e5e4;--card-bg:#fff;
+}
+html{font-size:16px}
+body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+
+.sheet-header{background:linear-gradient(135deg,#14532d,#16a34a,#059669);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}
+.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}
+.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+
+/* Golden rule banner */
+.golden-rule{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:12px;padding:1.5rem 2rem;text-align:center;margin:1rem 0 2rem}
+.golden-rule .emoji{font-size:2rem;margin-bottom:.3rem}
+.golden-rule h2{font-size:1.2rem;color:#92400e;margin-bottom:.3rem}
+.golden-rule p{font-size:.95rem;color:#78350f}
+
+/* Rules grid */
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1rem;margin:1rem 0}
+.rule-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.rule-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px}
+.rule-card:nth-child(1)::before{background:#16a34a}
+.rule-card:nth-child(2)::before{background:#2563eb}
+.rule-card:nth-child(3)::before{background:#7c3aed}
+.rule-card:nth-child(4)::before{background:#e11d48}
+.rule-card:nth-child(5)::before{background:#ea580c}
+.rule-card:nth-child(6)::before{background:#0891b2}
+.rule-card:nth-child(7)::before{background:#c026d3}
+.rule-card:nth-child(8)::before{background:#4f46e5}
+.rule-card:nth-child(9)::before{background:#0d9488}
+.rule-card:nth-child(10)::before{background:#b45309}
+.rule-card .rule-num{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.2rem}
+.rule-card h3{font-size:.95rem;margin-bottom:.5rem}
+.rule-card .instead-table{width:100%;font-size:.78rem;border-collapse:collapse}
+.rule-card .instead-table td{padding:.3rem .4rem;border-bottom:1px solid var(--border);vertical-align:top}
+.rule-card .instead-table td:first-child{color:var(--muted);text-decoration:line-through;width:45%}
+.rule-card .instead-table td:last-child{color:var(--accent);font-weight:600}
+.rule-card .instead-table tr:last-child td{border-bottom:none}
+
+/* Traps */
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin:1rem 0}
+.trap-card{background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:1rem 1.2rem}
+.trap-card h4{font-size:.85rem;color:#dc2626;margin-bottom:.4rem;display:flex;align-items:center;gap:.3rem}
+.trap-card p{font-size:.82rem;color:var(--fg);line-height:1.5}
+.trap-card .correct{color:var(--accent);font-weight:600;display:block;margin-top:.3rem}
+
+.callout{background:var(--accent-light);border:1px solid #86efac;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}
+.callout p:last-child{margin-bottom:0}
+
+@media print{
+  .sheet-header{background:#14532d!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rule-card::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:13px}
+  .container{padding:1rem}
+  .sheet-header .back{display:none}
+}
+@media(max-width:700px){
+  .sheet-header{padding:1.5rem 1rem 1.2rem}
+  .sheet-header h1{font-size:1.4rem}
+  .container{padding:1.5rem 1rem 3rem}
+  .rules-grid,.trap-grid{grid-template-columns:1fr}
+}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#4f46e5;--accent-light:#eef2ff;--border:#e7e5e4;--card-bg:#fff;--buyer:#dc2626;--seller:#2563eb}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#312e81,#4f46e5,#6366f1);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+
+/* Spectrum bar */
+.spectrum-container{margin:1.5rem 0}
+.spectrum-labels{display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;margin-bottom:.5rem}
+.spectrum-labels .buyer-label{color:var(--buyer)}
+.spectrum-labels .seller-label{color:var(--seller)}
+.spectrum-bar{display:flex;border-radius:10px;overflow:hidden;font-size:.72rem;font-weight:600;text-align:center;color:#fff}
+.spectrum-bar div{padding:.7rem .3rem;flex:1}
+.spectrum-bar .s1{background:#dc2626}.spectrum-bar .s2{background:#ea580c}.spectrum-bar .s3{background:#b45309}
+.spectrum-bar .s4{background:#78716c}.spectrum-bar .s5{background:#4f46e5}.spectrum-bar .s6{background:#2563eb}.spectrum-bar .s7{background:#1d4ed8}
+.risk-arrows{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:.4rem;padding:0 .3rem}
+
+/* Contract cards */
+.contract-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;margin:1rem 0}
+.c-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.c-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.c-card.cp::before{background:var(--buyer)}
+.c-card.tm::before{background:var(--muted)}
+.c-card.fp::before{background:var(--seller)}
+.c-card h3{font-size:.95rem;margin-bottom:.15rem}
+.c-card .abbr{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem}
+.c-card.cp .abbr{color:var(--buyer)}.c-card.tm .abbr{color:var(--muted)}.c-card.fp .abbr{color:var(--seller)}
+.c-card .desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:.5rem}
+.c-card .risk-bar{display:flex;gap:.3rem;font-size:.7rem;margin-bottom:.4rem}
+.c-card .risk-bar span{padding:.15rem .5rem;border-radius:8px;font-weight:600}
+.c-card .risk-bar .buyer-risk{background:#fef2f2;color:var(--buyer)}
+.c-card .risk-bar .seller-risk{background:#eff6ff;color:var(--seller)}
+.c-card .example{font-size:.78rem;background:#f5f5f4;border-radius:6px;padding:.5rem .7rem;line-height:1.5}
+
+.callout{background:var(--accent-light);border:1px solid #a5b4fc;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+
+.pta-box{background:var(--card-bg);border:2px solid var(--accent);border-radius:10px;padding:1.5rem;margin:1rem 0;text-align:center}
+.pta-box h3{color:var(--accent);margin-bottom:.5rem}
+.pta-box .formula{font-family:'Consolas',monospace;font-size:1.2rem;font-weight:700;color:var(--accent);background:var(--accent-light);padding:.5rem 1rem;border-radius:6px;display:inline-block;margin:.5rem 0}
+.pta-box .note{font-size:.82rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
+
+@media print{.sheet-header{background:#312e81!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.spectrum-bar div{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.contract-grid{grid-template-columns:1fr}.spectrum-bar{flex-direction:column}.spectrum-bar div{padding:.5rem}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#e11d48;--accent-light:#ffe4e6;--border:#e7e5e4;--card-bg:#fff;--threat:#dc2626;--threat-light:#fef2f2;--opp:#16a34a;--opp-light:#f0fdf4}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#881337,#e11d48,#f43f5e);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1rem 0}
+.col-header{font-size:1.1rem;font-weight:700;padding:.8rem 1rem;border-radius:10px 10px 0 0;text-align:center;color:#fff}
+.col-header.threat{background:var(--threat)}.col-header.opp{background:var(--opp)}
+.strat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem}
+.strat-card h3{font-size:.95rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem}
+.strat-card.threat h3{color:var(--threat)}.strat-card.opp h3{color:var(--opp)}
+.strat-card .def{font-size:.82rem;color:var(--muted);margin-bottom:.5rem;line-height:1.5;font-style:italic}
+.strat-card .example{font-size:.82rem;background:#f5f5f4;border-radius:6px;padding:.5rem .7rem;line-height:1.5}
+.strat-card .example strong{color:var(--fg)}
+.shared-card{background:var(--card-bg);border:2px dashed var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem;grid-column:1/-1}
+.shared-card h3{font-size:.95rem;color:var(--muted);margin-bottom:.3rem}
+.shared-card .def{font-size:.82rem;color:var(--muted);line-height:1.5;font-style:italic}
+.callout{background:var(--accent-light);border:1px solid #fda4af;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin:1rem 0}
+.process-step{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.process-step .num{font-size:1.5rem;font-weight:700;color:var(--accent);margin-bottom:.3rem}
+.process-step .label{font-size:.85rem;font-weight:600;margin-bottom:.2rem}
+.process-step .desc{font-size:.75rem;color:var(--muted)}
+@media print{.sheet-header{background:#881337!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.two-col{grid-template-columns:1fr}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#b45309;--accent-light:#fef3c7;--border:#e7e5e4;--card-bg:#fff;--people:#7c3aed;--people-light:#ede9fe;--process:#2563eb;--process-light:#dbeafe;--biz:#be185d;--biz-light:#fce7f3}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#78350f,#b45309,#451a03);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.section-title.people{color:var(--people)}.section-title.process{color:var(--process)}.section-title.biz{color:var(--biz)}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+
+/* Domain overview bars */
+.domain-bars{display:flex;gap:0;border-radius:10px;overflow:hidden;margin:1rem 0;font-weight:700;color:#fff;text-align:center;font-size:.85rem}
+.domain-bars .people{background:var(--people);flex:42;padding:.8rem .5rem}
+.domain-bars .process{background:var(--process);flex:50;padding:.8rem .5rem}
+.domain-bars .biz{background:var(--biz);flex:8;padding:.8rem .5rem}
+
+/* Task list */
+.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.7rem;margin:1rem 0}
+.task-item{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem}
+.task-item .task-num{font-weight:700;font-size:.7rem;min-width:2rem;padding:.15rem .4rem;border-radius:6px;text-align:center;flex-shrink:0;margin-top:.1rem}
+.task-item.people .task-num{background:var(--people-light);color:var(--people)}
+.task-item.process .task-num{background:var(--process-light);color:var(--process)}
+.task-item.biz .task-num{background:var(--biz-light);color:var(--biz)}
+.task-item .task-text{line-height:1.4}
+.task-item .task-text strong{display:block;font-size:.85rem;margin-bottom:.1rem}
+.task-item .task-text span{color:var(--muted);font-size:.75rem}
+
+.callout{background:var(--accent-light);border:1px solid #fbbf24;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+.stat-card{text-align:center;padding:1.2rem;border-radius:10px;border:1px solid var(--border)}
+.stat-card.people{background:var(--people-light)}.stat-card.process{background:var(--process-light)}.stat-card.biz{background:var(--biz-light)}
+.stat-card .pct{font-size:2rem;font-weight:800}
+.stat-card.people .pct{color:var(--people)}.stat-card.process .pct{color:var(--process)}.stat-card.biz .pct{color:var(--biz)}
+.stat-card .label{font-size:.85rem;font-weight:600;margin-top:.2rem}
+.stat-card .tasks{font-size:.75rem;color:var(--muted);margin-top:.2rem}
+
+@media print{.sheet-header{background:#78350f!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.domain-bars div,.stat-card{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:12px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.task-grid,.stat-grid{grid-template-columns:1fr}.domain-bars{font-size:.7rem}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#b45309;
+  --accent-light:#fef3c7;--border:#e7e5e4;--card-bg:#fff;
+  --success:#16a34a;--blue:#2563eb;--purple:#7c3aed;--rose:#e11d48;
+}
+html{font-size:16px}
+body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+
+/* Header */
+.sheet-header{background:linear-gradient(135deg,#78350f,#b45309,#d97706);color:#fff;padding:2rem 2rem 1.5rem;position:relative}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}
+.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem;letter-spacing:-.02em}
+.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+/* Section titles */
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+
+/* Diagram container */
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+.diagram-wrap .mermaid{display:flex;justify-content:center}
+
+/* Formula cards grid */
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin:1rem 0}
+.formula-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.formula-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.formula-card.input::before{background:#2563eb}
+.formula-card.variance::before{background:#16a34a}
+.formula-card.index::before{background:#7c3aed}
+.formula-card.forecast::before{background:#e11d48}
+.formula-card .abbr{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem}
+.formula-card.input .abbr{color:#2563eb}
+.formula-card.variance .abbr{color:#16a34a}
+.formula-card.index .abbr{color:#7c3aed}
+.formula-card.forecast .abbr{color:#e11d48}
+.formula-card .name{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.formula-card .formula{font-family:'Consolas','Courier New',monospace;font-size:1.1rem;font-weight:700;color:var(--accent);background:var(--accent-light);padding:.4rem .7rem;border-radius:6px;margin:.5rem 0;display:inline-block}
+.formula-card .interpret{font-size:.8rem;color:var(--muted);line-height:1.5}
+.formula-card .interpret strong{color:var(--fg)}
+
+/* EAC table */
+.eac-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+.eac-table th{background:var(--accent);color:#fff;padding:.6rem .8rem;text-align:left;font-size:.8rem}
+.eac-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border)}
+.eac-table tr:nth-child(even){background:#fafaf9}
+.eac-table code{background:var(--accent-light);padding:.15rem .4rem;border-radius:4px;font-size:.85rem;font-family:'Consolas',monospace;font-weight:600}
+
+/* Interpretation guide */
+.interp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0}
+.interp-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.interp-card .metric{font-weight:700;font-size:1rem;margin-bottom:.5rem}
+.interp-row{display:flex;justify-content:space-between;font-size:.8rem;padding:.3rem 0;border-bottom:1px solid var(--border)}
+.interp-row:last-child{border-bottom:none}
+.interp-row .val{font-weight:700;font-family:monospace}
+.good{color:#16a34a}
+.neutral{color:#b45309}
+.bad{color:#e11d48}
+
+/* Other formulas */
+.other-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;margin:1rem 0}
+.other-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem}
+.other-card h3{font-size:.95rem;color:var(--accent);margin-bottom:.5rem}
+.other-card .formula{font-family:'Consolas',monospace;font-size:1.05rem;font-weight:700;color:var(--accent);background:var(--accent-light);padding:.4rem .7rem;border-radius:6px;margin:.4rem 0;display:inline-block}
+.other-card .note{font-size:.8rem;color:var(--muted);margin-top:.4rem;line-height:1.5}
+
+/* Callout */
+.callout{background:var(--accent-light);border:1px solid #fbbf24;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}
+.callout p:last-child{margin-bottom:0}
+
+/* Print */
+@media print{
+  .sheet-header{background:#78350f!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .formula-card::before,.diagram-wrap{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:14px}
+  .container{padding:1rem}
+  .sheet-header .back{display:none}
+}
+@media(max-width:700px){
+  .sheet-header{padding:1.5rem 1rem 1.2rem}
+  .sheet-header h1{font-size:1.4rem}
+  .container{padding:1.5rem 1rem 3rem}
+  .formula-grid,.interp-grid,.other-grid{grid-template-columns:1fr}
+}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#0891b2;--accent-light:#cffafe;--border:#e7e5e4;--card-bg:#fff}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#164e63,#0891b2,#06b6d4);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+.role-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.role-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.role-card:nth-child(1)::before{background:#2563eb}
+.role-card:nth-child(2)::before{background:#16a34a}
+.role-card:nth-child(3)::before{background:#7c3aed}
+.role-card h3{font-size:1rem;margin-bottom:.4rem}
+.role-card:nth-child(1) h3{color:#2563eb}
+.role-card:nth-child(2) h3{color:#16a34a}
+.role-card:nth-child(3) h3{color:#7c3aed}
+.role-card ul{list-style:none;padding:0;margin:0}
+.role-card li{font-size:.82rem;padding:.25rem 0;padding-left:1rem;position:relative;line-height:1.5}
+.role-card li::before{content:'→';position:absolute;left:0;color:var(--muted)}
+.event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin:1rem 0}
+.event-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.1rem;position:relative;overflow:hidden}
+.event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.event-card h3{font-size:.95rem;color:var(--accent);margin-bottom:.2rem}
+.event-card .timebox{font-size:.7rem;font-weight:700;background:var(--accent-light);color:var(--accent);padding:.15rem .5rem;border-radius:10px;display:inline-block;margin-bottom:.4rem}
+.event-card .desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:.4rem}
+.event-card .who{font-size:.75rem;color:var(--fg)}
+.event-card .who strong{color:var(--accent)}
+.artifact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+.artifact{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center}
+.artifact .icon{font-size:2rem;margin-bottom:.3rem}
+.artifact h3{font-size:.95rem;color:var(--accent);margin-bottom:.3rem}
+.artifact .desc{font-size:.82rem;color:var(--muted);line-height:1.5}
+.artifact .owner{font-size:.75rem;font-weight:600;color:var(--fg);margin-top:.4rem}
+.callout{background:var(--accent-light);border:1px solid #67e8f9;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem;margin:1rem 0}
+.metric{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.metric h4{font-size:.9rem;color:var(--accent);margin-bottom:.3rem}
+.metric p{font-size:.78rem;color:var(--muted);line-height:1.4}
+@media print{.sheet-header{background:#164e63!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.three-col,.artifact-grid{grid-template-columns:1fr}.event-grid{grid-template-columns:1fr}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#ea580c;--accent-light:#fff7ed;--border:#e7e5e4;--card-bg:#fff;--pred:#2563eb;--agile:#16a34a;--hybrid:#7c3aed}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#7c2d12,#ea580c,#f97316);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem}
+.compare-table th{padding:.6rem .8rem;text-align:left;font-size:.8rem;color:#fff}
+.compare-table th:nth-child(1){background:var(--muted);width:22%}
+.compare-table th:nth-child(2){background:var(--pred)}
+.compare-table th:nth-child(3){background:var(--agile)}
+.compare-table th:nth-child(4){background:var(--hybrid)}
+.compare-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}
+.compare-table tr:nth-child(even){background:#fafaf9}
+.compare-table td:first-child{font-weight:600;color:var(--fg)}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+.approach-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.approach-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.approach-card:nth-child(1)::before{background:var(--pred)}
+.approach-card:nth-child(2)::before{background:var(--agile)}
+.approach-card:nth-child(3)::before{background:var(--hybrid)}
+.approach-card h3{font-size:1rem;margin-bottom:.5rem}
+.approach-card:nth-child(1) h3{color:var(--pred)}
+.approach-card:nth-child(2) h3{color:var(--agile)}
+.approach-card:nth-child(3) h3{color:var(--hybrid)}
+.approach-card .best{font-size:.82rem;font-weight:600;margin-bottom:.4rem}
+.approach-card ul{list-style:none;padding:0;margin:0}
+.approach-card li{font-size:.78rem;padding:.2rem 0;padding-left:1rem;position:relative;line-height:1.5}
+.approach-card li::before{content:'✓';position:absolute;left:0;color:var(--muted)}
+.callout{background:var(--accent-light);border:1px solid #fdba74;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+@media print{.sheet-header{background:#7c2d12!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.compare-table th{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.approach-grid{grid-template-columns:1fr}.compare-table{font-size:.75rem}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#7c3aed;--accent-light:#ede9fe;--border:#e7e5e4;--card-bg:#fff}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#3b0764,#7c3aed,#a855f7);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1rem;margin:1rem 0}
+.tech-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.tech-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.tech-card:nth-child(1)::before{background:#16a34a}
+.tech-card:nth-child(2)::before{background:#2563eb}
+.tech-card:nth-child(3)::before{background:#b45309}
+.tech-card:nth-child(4)::before{background:#ea580c}
+.tech-card:nth-child(5)::before{background:#dc2626}
+.tech-card .rank{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.tech-card:nth-child(1) .rank{color:#16a34a}
+.tech-card:nth-child(2) .rank{color:#2563eb}
+.tech-card:nth-child(3) .rank{color:#b45309}
+.tech-card:nth-child(4) .rank{color:#ea580c}
+.tech-card:nth-child(5) .rank{color:#dc2626}
+.tech-card h3{font-size:1rem;margin-bottom:.2rem}
+.tech-card .aka{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:.5rem}
+.tech-card .def{font-size:.82rem;margin-bottom:.5rem;line-height:1.5}
+.tech-card .when{font-size:.78rem;background:#f5f5f4;border-radius:6px;padding:.5rem .7rem;line-height:1.5}
+.tech-card .when strong{color:var(--fg)}
+.tech-card .pmi-badge{display:inline-block;font-size:.65rem;padding:.15rem .5rem;border-radius:10px;font-weight:700;margin-top:.5rem}
+.tech-card:nth-child(1) .pmi-badge{background:#dcfce7;color:#16a34a}
+.tech-card:nth-child(5) .pmi-badge{background:#fef2f2;color:#dc2626}
+.spectrum{display:flex;align-items:stretch;margin:1rem 0;border-radius:10px;overflow:hidden;font-size:.75rem;font-weight:600;text-align:center}
+.spectrum div{flex:1;padding:.8rem .5rem;color:#fff}
+.spectrum .s1{background:#16a34a}.spectrum .s2{background:#2563eb}.spectrum .s3{background:#b45309}.spectrum .s4{background:#ea580c}.spectrum .s5{background:#dc2626}
+.spectrum-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:.3rem;padding:0 .3rem}
+.callout{background:var(--accent-light);border:1px solid #c4b5fd;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin:1rem 0}
+.scenario{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1rem}
+.scenario .q{font-size:.85rem;font-style:italic;margin-bottom:.5rem;line-height:1.5}
+.scenario .a{font-size:.82rem;color:var(--accent);font-weight:600}
+@media print{.sheet-header{background:#3b0764!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.spectrum div{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.tech-grid,.scenario-grid{grid-template-columns:1fr}.spectrum{flex-direction:column}.spectrum div{padding:.5rem}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#0d9488;--accent-light:#ccfbf1;--border:#e7e5e4;--card-bg:#fff}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#134e4a,#0d9488,#14b8a6);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+
+.stage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1rem;margin:1rem 0}
+.stage-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.stage-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.stage-card:nth-child(1)::before{background:#2563eb}
+.stage-card:nth-child(2)::before{background:#dc2626}
+.stage-card:nth-child(3)::before{background:#b45309}
+.stage-card:nth-child(4)::before{background:#16a34a}
+.stage-card:nth-child(5)::before{background:#7c3aed}
+.stage-card .stage-num{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.stage-card:nth-child(1) .stage-num{color:#2563eb}
+.stage-card:nth-child(2) .stage-num{color:#dc2626}
+.stage-card:nth-child(3) .stage-num{color:#b45309}
+.stage-card:nth-child(4) .stage-num{color:#16a34a}
+.stage-card:nth-child(5) .stage-num{color:#7c3aed}
+.stage-card h3{font-size:1rem;margin-bottom:.4rem}
+.stage-card .mood{font-size:.82rem;font-style:italic;color:var(--muted);margin-bottom:.5rem}
+.stage-card .section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-top:.6rem;margin-bottom:.2rem}
+.stage-card ul{list-style:none;padding:0;margin:0}
+.stage-card li{font-size:.8rem;padding:.2rem 0;padding-left:1rem;position:relative;line-height:1.5}
+.stage-card li::before{content:'→';position:absolute;left:0;color:var(--muted)}
+.stage-card .pm-action{background:#f0fdfa;border-radius:6px;padding:.5rem .7rem;margin-top:.5rem}
+.stage-card .pm-action .section-label{margin-top:0}
+
+.callout{background:var(--accent-light);border:1px solid #5eead4;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+
+@media print{.sheet-header{background:#134e4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.stage-card::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.stage-grid{grid-template-columns:1fr}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#dc2626;--accent-light:#fef2f2;--border:#e7e5e4;--card-bg:#fff}
+html{font-size:15px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#7f1d1d,#dc2626,#ef4444);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
+
+.timer-banner{background:linear-gradient(90deg,#fef2f2,#fff);border:2px solid #fca5a5;border-radius:12px;padding:1rem 1.5rem;text-align:center;margin:1rem 0 1.5rem}
+.timer-banner .big{font-size:1.5rem;font-weight:800;color:var(--accent)}
+.timer-banner p{font-size:.85rem;color:var(--muted);margin-top:.2rem}
+
+.dump-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0}
+.dump-section{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;position:relative;overflow:hidden}
+.dump-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.dump-section h3{font-size:.9rem;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.dump-section table{width:100%;border-collapse:collapse;font-size:.78rem}
+.dump-section th{background:#fef2f2;padding:.3rem .5rem;text-align:left;font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.dump-section td{padding:.3rem .5rem;border-bottom:1px solid var(--border)}
+.dump-section code{font-family:'Consolas',monospace;font-weight:700;color:var(--accent);font-size:.82rem}
+.dump-section ul{list-style:none;padding:0;margin:0}
+.dump-section li{font-size:.8rem;padding:.2rem 0;padding-left:.8rem;position:relative;line-height:1.4}
+.dump-section li::before{content:'•';position:absolute;left:0;color:var(--accent)}
+.dump-section .note{font-size:.72rem;color:var(--muted);margin-top:.4rem;font-style:italic}
+
+.full-width{grid-column:1/-1}
+
+.callout{background:var(--accent-light);border:1px solid #fca5a5;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+
+@media print{
+  .sheet-header{background:#7f1d1d!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dump-section::before,.dump-section th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:12px}
+  .container{padding:.5rem}
+  .sheet-header{padding:1rem}
+  .sheet-header .back{display:none}
+  .dump-grid{gap:.5rem}
+  .dump-section{padding:.6rem .8rem}
+  .timer-banner{padding:.5rem;margin:.5rem 0}
+}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.dump-grid{grid-template-columns:1fr}}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#7c3aed;
+  --accent-light:#ede9fe;--border:#e7e5e4;--card-bg:#fff;
+  --people:#2563eb;--people-light:#dbeafe;
+  --approach:#7c3aed;--approach-light:#ede9fe;
+  --outcome:#e11d48;--outcome-light:#ffe4e6;
+}
+html{font-size:16px}
+body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+
+.sheet-header{background:linear-gradient(135deg,#1e3a5f,#2563eb,#7c3aed);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}
+.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}
+.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+
+/* Legend */
+.legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:.85rem}
+.legend-item{display:flex;align-items:center;gap:.4rem}
+.legend-dot{width:14px;height:14px;border-radius:50%}
+.legend-dot.people{background:var(--people)}
+.legend-dot.approach{background:var(--approach)}
+.legend-dot.outcome{background:var(--outcome)}
+
+/* Principle cards */
+.group-title{font-size:1.1rem;font-weight:700;margin:2rem 0 .8rem;display:flex;align-items:center;gap:.5rem}
+.group-title.people{color:var(--people)}
+.group-title.approach{color:var(--approach)}
+.group-title.outcome{color:var(--outcome)}
+
+.principle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:1.5rem}
+.p-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.1rem;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.p-card.people::before{background:var(--people)}
+.p-card.approach::before{background:var(--approach)}
+.p-card.outcome::before{background:var(--outcome)}
+.p-card .num{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.15rem}
+.p-card.people .num{color:var(--people)}
+.p-card.approach .num{color:var(--approach)}
+.p-card.outcome .num{color:var(--outcome)}
+.p-card h3{font-size:.95rem;margin-bottom:.4rem}
+.p-card .core{font-size:.82rem;color:var(--muted);margin-bottom:.5rem;line-height:1.5;font-style:italic}
+.p-card .behaviors{list-style:none;padding:0;margin:0}
+.p-card .behaviors li{font-size:.78rem;padding:.2rem 0;padding-left:1rem;position:relative;color:var(--fg)}
+.p-card .behaviors li::before{content:'→';position:absolute;left:0;color:var(--muted)}
+
+/* Exam tips */
+.tip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin:1rem 0}
+.tip-card{background:var(--accent-light);border:1px solid #c4b5fd;border-radius:10px;padding:1rem 1.2rem}
+.tip-card h4{font-size:.85rem;color:var(--accent);margin-bottom:.4rem}
+.tip-card p{font-size:.82rem;color:var(--fg);line-height:1.5}
+
+.callout{background:var(--accent-light);border:1px solid #c4b5fd;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}
+.callout p:last-child{margin-bottom:0}
+
+@media print{
+  .sheet-header{background:#1e3a5f!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .p-card::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:13px}
+  .container{padding:1rem}
+  .sheet-header .back{display:none}
+}
+@media(max-width:700px){
+  .sheet-header{padding:1.5rem 1rem 1.2rem}
+  .sheet-header h1{font-size:1.4rem}
+  .container{padding:1.5rem 1rem 3rem}
+  .principle-grid{grid-template-columns:1fr}
+}
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#c026d3;--accent-light:#fae8ff;--border:#e7e5e4;--card-bg:#fff}
+html{font-size:16px}body{font-family:system-ui,-apple-system,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.sheet-header{background:linear-gradient(135deg,#701a75,#c026d3,#d946ef);color:#fff;padding:2rem 2rem 1.5rem}
+.sheet-header .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem}.sheet-header .back:hover{color:#fff}
+.sheet-header h1{font-size:1.8rem;margin-top:.5rem}.sheet-header .subtitle{opacity:.85;font-size:.95rem;margin-top:.3rem}
+.sheet-header .domain-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:12px;font-size:.7rem;margin-top:.6rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-size:1.3rem;font-weight:700;color:var(--accent);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent-light);display:flex;align-items:center;gap:.5rem}
+.section-title:first-child{margin-top:0}
+.diagram-wrap{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem 0;overflow-x:auto}
+
+.level-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1rem;margin:1rem 0}
+.level-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem;position:relative;overflow:hidden}
+.level-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.level-card:nth-child(1)::before{background:#78716c}
+.level-card:nth-child(2)::before{background:#dc2626}
+.level-card:nth-child(3)::before{background:#b45309}
+.level-card:nth-child(4)::before{background:#16a34a}
+.level-card:nth-child(5)::before{background:#2563eb}
+.level-card .level-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.level-card:nth-child(1) .level-label{color:#78716c}
+.level-card:nth-child(2) .level-label{color:#dc2626}
+.level-card:nth-child(3) .level-label{color:#b45309}
+.level-card:nth-child(4) .level-label{color:#16a34a}
+.level-card:nth-child(5) .level-label{color:#2563eb}
+.level-card h3{font-size:1rem;margin-bottom:.3rem}
+.level-card .desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:.5rem;font-style:italic}
+.level-card .section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-top:.5rem;margin-bottom:.2rem}
+.level-card ul{list-style:none;padding:0;margin:0}
+.level-card li{font-size:.8rem;padding:.2rem 0;padding-left:1rem;position:relative;line-height:1.5}
+.level-card li::before{content:'→';position:absolute;left:0;color:var(--muted)}
+
+/* Power/Interest grid */
+.grid-container{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:0;margin:1rem 0;max-width:600px}
+.grid-cell{padding:1rem;border:1px solid var(--border);font-size:.82rem;line-height:1.5}
+.grid-cell h4{font-size:.85rem;margin-bottom:.3rem}
+.grid-cell:nth-child(1){background:#fef2f2;border-radius:10px 0 0 0}.grid-cell:nth-child(1) h4{color:#dc2626}
+.grid-cell:nth-child(2){background:#dcfce7;border-radius:0 10px 0 0}.grid-cell:nth-child(2) h4{color:#16a34a}
+.grid-cell:nth-child(3){background:#f5f5f4;border-radius:0 0 0 10px}.grid-cell:nth-child(3) h4{color:#78716c}
+.grid-cell:nth-child(4){background:#dbeafe;border-radius:0 0 10px 0}.grid-cell:nth-child(4) h4{color:#2563eb}
+.grid-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);max-width:600px;margin-top:.3rem}
+.grid-y-label{font-size:.75rem;color:var(--muted);margin-bottom:.3rem}
+
+.callout{background:var(--accent-light);border:1px solid #e879f9;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0}
+.callout-title{font-weight:700;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
+.callout p{font-size:.85rem;margin-bottom:.3rem}.callout p:last-child{margin-bottom:0}
+
+@media print{.sheet-header{background:#701a75!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.level-card::before,.grid-cell{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:13px}.container{padding:1rem}.sheet-header .back{display:none}}
+@media(max-width:700px){.sheet-header{padding:1.5rem 1rem 1.2rem}.sheet-header h1{font-size:1.4rem}.container{padding:1.5rem 1rem 3rem}.level-grid{grid-template-columns:1fr}}
+
+
+/* === Combined Document Styles === */
+.sheet-break {
+    page-break-before: always;
+}
+@media print {
+    .sheet-break { page-break-before: always; }
+    .sheet-header .back { display: none !important; }
+}
+@media screen {
+    .sheet-break { 
+        border-top: 4px solid #333;
+        margin-top: 3rem;
+        padding-top: 0;
+    }
+}
+
+
+/* === Print-Optimized: Prevent content splitting across pages === */
+@media print {
+    /* Cards should never split across pages */
+    .formula-card, .tech-card, .p-card, .rule-card, .stage-card,
+    .approach-card, .event-card, .other-card, .interp-card, .tip-card,
+    .trap-card, .strat-card, .level-card, .stat-card, .role-card,
+    .shared-card, .c-card, .scenario {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Tables should not split across pages */
+    table, .eac-table, .compare-table {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Callouts and special boxes stay together */
+    .callout, .golden-rule, .pta-box, .timer-banner {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Diagrams stay together */
+    .diagram-wrap {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Section titles should not be orphaned at bottom of page */
+    .section-title, .group-title, h2, h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    /* Each cheat sheet starts on a new page */
+    .sheet-break {
+        break-before: page;
+        page-break-before: always;
+    }
+
+    /* Grids: allow breaking between cards but not inside them */
+    .formula-grid, .tech-grid, .principle-grid, .rules-grid,
+    .stage-grid, .approach-grid, .event-grid, .other-grid,
+    .interp-grid, .tip-grid, .trap-grid, .scenario-grid,
+    .contract-grid, .dump-grid, .level-grid, .metric-grid,
+    .stat-grid, .task-grid, .artifact-grid {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    /* Two/three column layouts stay together if small */
+    .two-col, .three-col {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Spectrum visualizations stay together */
+    .spectrum, .spectrum-container {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Hide back links */
+    .sheet-header .back {
+        display: none !important;
+    }
+
+    /* Ensure backgrounds print */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+
+</style>
+</head>
+<body>
+<!-- ===== 01-evm-formulas.html ===== -->
+
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>📊 EVM Formula Map</h1>
+  <div class="subtitle">Earned Value Management — All formulas, relationships, and interpretation rules</div>
+  <div class="domain-badge">Process Domain · Formulas · Brain Dump Priority</div>
+</div>
+
+<div class="container">
+
+<!-- ============ RELATIONSHIP FLOWCHART ============ -->
+<div class="section-title">🔗 How EVM Metrics Relate</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TB
+  subgraph inputs ["📥 THE THREE INPUTS"]
+    direction LR
+    PV["<b>PV</b><br/>Planned Value<br/><i>What you planned to spend</i>"]
+    EV["<b>EV</b><br/>Earned Value<br/><i>Value of work done</i>"]
+    AC["<b>AC</b><br/>Actual Cost<br/><i>What you actually spent</i>"]
+  end
+
+  subgraph variances ["📐 VARIANCES (Subtract)"]
+    direction LR
+    SV["<b>SV = EV − PV</b><br/>Schedule Variance"]
+    CV["<b>CV = EV − AC</b><br/>Cost Variance"]
+  end
+
+  subgraph indices ["📈 INDICES (Divide)"]
+    direction LR
+    SPI["<b>SPI = EV / PV</b><br/>Schedule Perf Index"]
+    CPI["<b>CPI = EV / AC</b><br/>Cost Perf Index"]
+  end
+
+  subgraph forecasts ["🔮 FORECASTS"]
+    direction LR
+    EAC["<b>EAC</b><br/>Estimate at Completion<br/><i>Projected total cost</i>"]
+    ETC["<b>ETC = EAC − AC</b><br/>Estimate to Complete"]
+    VAC["<b>VAC = BAC − EAC</b><br/>Variance at Completion"]
+    TCPI["<b>TCPI</b><br/>To-Complete Perf Index"]
+  end
+
+  BAC["<b>BAC</b><br/>Budget at Completion<br/><i>Original total budget</i>"]
+
+  PV --> SV
+  EV --> SV
+  EV --> CV
+  AC --> CV
+  EV --> SPI
+  PV --> SPI
+  EV --> CPI
+  AC --> CPI
+  CPI --> EAC
+  BAC --> EAC
+  EAC --> ETC
+  AC --> ETC
+  BAC --> VAC
+  EAC --> VAC
+  BAC --> TCPI
+  EV --> TCPI
+  AC --> TCPI
+
+  style inputs fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+  style variances fill:#dcfce7,stroke:#16a34a,color:#14532d
+  style indices fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+  style forecasts fill:#ffe4e6,stroke:#e11d48,color:#881337
+  style BAC fill:#fef3c7,stroke:#b45309,color:#78350f
+  </pre>
+</div>
+
+<!-- ============ CORE FORMULAS ============ -->
+<div class="section-title">📐 Core Formulas</div>
+
+<div class="formula-grid">
+  <div class="formula-card input">
+    <div class="abbr">Input</div>
+    <div class="name">PV — Planned Value</div>
+    <div class="formula">Budget for work scheduled</div>
+    <div class="interpret">What you <strong>planned</strong> to spend by now. The baseline.</div>
+  </div>
+  <div class="formula-card input">
+    <div class="abbr">Input</div>
+    <div class="name">EV — Earned Value</div>
+    <div class="formula">Budget for work completed</div>
+    <div class="interpret">The <strong>value</strong> of work actually done. The key metric.</div>
+  </div>
+  <div class="formula-card input">
+    <div class="abbr">Input</div>
+    <div class="name">AC — Actual Cost</div>
+    <div class="formula">Actual spend to date</div>
+    <div class="interpret">What you <strong>actually spent</strong>. Real money out the door.</div>
+  </div>
+  <div class="formula-card input">
+    <div class="abbr">Input</div>
+    <div class="name">BAC — Budget at Completion</div>
+    <div class="formula">Total project budget</div>
+    <div class="interpret">The <strong>original total budget</strong>. Doesn't change unless re-baselined.</div>
+  </div>
+
+  <div class="formula-card variance">
+    <div class="abbr">Variance</div>
+    <div class="name">SV — Schedule Variance</div>
+    <div class="formula">SV = EV − PV</div>
+    <div class="interpret"><strong>Negative = behind schedule.</strong> Zero = on schedule. Positive = ahead.</div>
+  </div>
+  <div class="formula-card variance">
+    <div class="abbr">Variance</div>
+    <div class="name">CV — Cost Variance</div>
+    <div class="formula">CV = EV − AC</div>
+    <div class="interpret"><strong>Negative = over budget.</strong> Zero = on budget. Positive = under budget.</div>
+  </div>
+
+  <div class="formula-card index">
+    <div class="abbr">Index</div>
+    <div class="name">SPI — Schedule Performance Index</div>
+    <div class="formula">SPI = EV / PV</div>
+    <div class="interpret"><strong>&lt; 1.0 = behind schedule.</strong> 1.0 = on track. &gt; 1.0 = ahead.</div>
+  </div>
+  <div class="formula-card index">
+    <div class="abbr">Index</div>
+    <div class="name">CPI — Cost Performance Index</div>
+    <div class="formula">CPI = EV / AC</div>
+    <div class="interpret"><strong>&lt; 1.0 = over budget.</strong> 1.0 = on budget. &gt; 1.0 = under budget.</div>
+  </div>
+
+  <div class="formula-card forecast">
+    <div class="abbr">Forecast</div>
+    <div class="name">ETC — Estimate to Complete</div>
+    <div class="formula">ETC = EAC − AC</div>
+    <div class="interpret">How much <strong>more</strong> you need to spend to finish.</div>
+  </div>
+  <div class="formula-card forecast">
+    <div class="abbr">Forecast</div>
+    <div class="name">VAC — Variance at Completion</div>
+    <div class="formula">VAC = BAC − EAC</div>
+    <div class="interpret"><strong>Negative = will be over budget.</strong> Positive = will be under budget.</div>
+  </div>
+  <div class="formula-card forecast">
+    <div class="abbr">Forecast</div>
+    <div class="name">TCPI — To-Complete Performance Index</div>
+    <div class="formula">TCPI = (BAC − EV) / (BAC − AC)</div>
+    <div class="interpret">Required <strong>efficiency</strong> to meet BAC. &gt; 1.0 = must improve. &lt; 1.0 = can relax.</div>
+  </div>
+</div>
+
+<!-- ============ EAC VARIATIONS ============ -->
+<div class="section-title">🔮 EAC — Three Variations (Know When to Use Each)</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TD
+  Q["What caused the variance?"]
+  Q -->|"CPI trend will continue<br/>(most common on exam)"| T["<b>Typical</b><br/>EAC = BAC / CPI"]
+  Q -->|"Variance was a one-time event<br/>(won't recur)"| A["<b>Atypical</b><br/>EAC = AC + (BAC − EV)"]
+  Q -->|"Both schedule and cost<br/>factors apply"| B["<b>Both Factors</b><br/>EAC = AC + (BAC − EV) / (CPI × SPI)"]
+
+  style Q fill:#fef3c7,stroke:#b45309,color:#78350f
+  style T fill:#dcfce7,stroke:#16a34a,color:#14532d
+  style A fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+  style B fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+  </pre>
+</div>
+
+<table class="eac-table">
+  <thead>
+    <tr><th>Scenario</th><th>Formula</th><th>When to Use</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Typical</strong> (CPI trend continues)</td>
+      <td><code>EAC = BAC / CPI</code></td>
+      <td>Default on the exam. Past performance predicts future. Most common.</td>
+    </tr>
+    <tr>
+      <td><strong>Atypical</strong> (one-time variance)</td>
+      <td><code>EAC = AC + (BAC − EV)</code></td>
+      <td>The variance was unusual and won't repeat. Remaining work at original rate.</td>
+    </tr>
+    <tr>
+      <td><strong>Both factors</strong> (SPI + CPI)</td>
+      <td><code>EAC = AC + (BAC − EV) / (CPI × SPI)</code></td>
+      <td>Both schedule and cost performance affect the forecast.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tip</div>
+  <p>If the question says "the current CPI is expected to continue" or doesn't specify, use <strong>EAC = BAC / CPI</strong> (typical). This is the default.</p>
+  <p>If it says "the variance was a one-time event" or "atypical," use <strong>EAC = AC + (BAC − EV)</strong>.</p>
+</div>
+
+<!-- ============ INTERPRETATION GUIDE ============ -->
+<div class="section-title">🚦 Quick Interpretation Guide</div>
+
+<div class="interp-grid">
+  <div class="interp-card">
+    <div class="metric">SV (Schedule Variance)</div>
+    <div class="interp-row"><span>Positive</span><span class="val good">Ahead of schedule ✓</span></div>
+    <div class="interp-row"><span>Zero</span><span class="val neutral">On schedule</span></div>
+    <div class="interp-row"><span>Negative</span><span class="val bad">Behind schedule ✗</span></div>
+  </div>
+  <div class="interp-card">
+    <div class="metric">CV (Cost Variance)</div>
+    <div class="interp-row"><span>Positive</span><span class="val good">Under budget ✓</span></div>
+    <div class="interp-row"><span>Zero</span><span class="val neutral">On budget</span></div>
+    <div class="interp-row"><span>Negative</span><span class="val bad">Over budget ✗</span></div>
+  </div>
+  <div class="interp-card">
+    <div class="metric">SPI (Schedule Index)</div>
+    <div class="interp-row"><span>&gt; 1.0</span><span class="val good">Ahead of schedule ✓</span></div>
+    <div class="interp-row"><span>= 1.0</span><span class="val neutral">On schedule</span></div>
+    <div class="interp-row"><span>&lt; 1.0</span><span class="val bad">Behind schedule ✗</span></div>
+  </div>
+  <div class="interp-card">
+    <div class="metric">CPI (Cost Index)</div>
+    <div class="interp-row"><span>&gt; 1.0</span><span class="val good">Under budget ✓</span></div>
+    <div class="interp-row"><span>= 1.0</span><span class="val neutral">On budget</span></div>
+    <div class="interp-row"><span>&lt; 1.0</span><span class="val bad">Over budget ✗</span></div>
+  </div>
+  <div class="interp-card">
+    <div class="metric">TCPI (To-Complete Index)</div>
+    <div class="interp-row"><span>&lt; 1.0</span><span class="val good">Can relax pace ✓</span></div>
+    <div class="interp-row"><span>= 1.0</span><span class="val neutral">Stay the course</span></div>
+    <div class="interp-row"><span>&gt; 1.0</span><span class="val bad">Must improve ✗</span></div>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">🧠 Memory Trick</div>
+  <p><strong>Variances:</strong> EV is always first. EV − PV (Schedule), EV − AC (Cost). Negative = bad.</p>
+  <p><strong>Indices:</strong> EV is always the numerator. EV / PV (Schedule), EV / AC (Cost). Below 1.0 = bad.</p>
+  <p><strong>Pattern:</strong> PV = schedule, AC = cost. If the second term has P → schedule. If it has C → cost.</p>
+</div>
+
+<!-- ============ OTHER KEY FORMULAS ============ -->
+<div class="section-title">📝 Other Key Formulas</div>
+
+<div class="other-grid">
+  <div class="other-card">
+    <h3>📡 Communication Channels</h3>
+    <div class="formula">n(n − 1) / 2</div>
+    <div class="note">Where <strong>n</strong> = number of stakeholders (including the PM).<br/>
+    Example: 10 people → 10(9)/2 = <strong>45 channels</strong><br/>
+    Add 1 person → 11(10)/2 = <strong>55 channels</strong> (+10!)</div>
+  </div>
+  <div class="other-card">
+    <h3>📊 PERT Estimate</h3>
+    <div class="formula">tE = (O + 4M + P) / 6</div>
+    <div class="note"><strong>O</strong> = Optimistic, <strong>M</strong> = Most Likely, <strong>P</strong> = Pessimistic<br/>
+    Weighted toward the most likely estimate (4× weight).</div>
+  </div>
+  <div class="other-card">
+    <h3>📏 Standard Deviation</h3>
+    <div class="formula">σ = (P − O) / 6</div>
+    <div class="note">Measures spread of the estimate. Larger σ = more uncertainty.<br/>
+    <strong>Variance</strong> = σ² = ((P − O) / 6)²</div>
+  </div>
+  <div class="other-card">
+    <h3>💰 Point of Total Assumption (PTA)</h3>
+    <div class="formula">PTA = ((CP − TP) / BSR) + TC</div>
+    <div class="note"><strong>CP</strong> = Ceiling Price, <strong>TP</strong> = Target Price, <strong>BSR</strong> = Buyer's Share Ratio, <strong>TC</strong> = Target Cost<br/>
+    Used only for <strong>Fixed Price Incentive Fee (FPIF)</strong> contracts.</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#fef3c7',
+      primaryTextColor: '#1c1917',
+      primaryBorderColor: '#b45309',
+      lineColor: '#b45309',
+      secondaryColor: '#dbeafe',
+      tertiaryColor: '#dcfce7',
+      fontFamily: 'system-ui, sans-serif',
+      fontSize: '14px'
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis',
+      padding: 15,
+      nodeSpacing: 30,
+      rankSpacing: 50
+    }
+  });
+</script>
+
+<!-- ===== 02-twelve-principles.html ===== -->
+<div class="sheet-break"></div>
+
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>🧭 12 Principles Mind Map</h1>
+  <div class="subtitle">PMBOK 7th Edition — Guiding principles grouped by focus area</div>
+  <div class="domain-badge">Process + People Domains · PMBOK 7 Foundation</div>
+</div>
+
+<div class="container">
+
+<!-- ============ MIND MAP DIAGRAM ============ -->
+<div class="section-title" style="margin-top:0">🗺️ Principles at a Glance</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot people"></div> People-Focused</div>
+  <div class="legend-item"><div class="legend-dot approach"></div> Approach-Focused</div>
+  <div class="legend-item"><div class="legend-dot outcome"></div> Outcome-Focused</div>
+</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+mindmap
+  root(("🧭 12 PMBOK 7<br/>Principles"))
+    **People-Focused**
+      1 Stewardship
+        Responsible custodian
+        Integrity & ethics
+        Transparent reporting
+      2 Team
+        Psychological safety
+        Empowerment
+        Shared purpose
+      3 Stakeholders
+        Early engagement
+        Continuous communication
+        Relationship building
+      6 Leadership
+        Servant leadership
+        Inspire & motivate
+        Influence over authority
+    **Approach-Focused**
+      5 Systems Thinking
+        See the whole picture
+        Ripple effects
+        Cause and effect
+      7 Tailoring
+        Adapt to context
+        Size & complexity
+        Industry & culture
+      9 Complexity
+        Navigate ambiguity
+        Human behavior
+        Emergent challenges
+      11 Adaptability
+        Flexibility
+        Learn from setbacks
+        Resilience
+    **Outcome-Focused**
+      4 Value
+        Outcomes over outputs
+        Continuous assessment
+        Incremental delivery
+      8 Quality
+        Prevention over inspection
+        QA vs QC
+        Cost of quality
+      10 Risk
+        Proactive management
+        Threats & opportunities
+        Response strategies
+      12 Change
+        Enable transformation
+        Organizational readiness
+        Change management
+  </pre>
+</div>
+
+<!-- ============ DETAILED CARDS ============ -->
+<div class="section-title">👥 Detailed Breakdown</div>
+
+<div class="group-title people">🔵 People-Focused — How you lead and interact</div>
+<div class="principle-grid">
+  <div class="p-card people">
+    <div class="num">Principle 1</div>
+    <h3>Stewardship</h3>
+    <div class="core">Be a diligent, respectful, and caring custodian of resources entrusted to you.</div>
+    <ul class="behaviors">
+      <li>Act with integrity in all decisions</li>
+      <li>Report status honestly (good and bad)</li>
+      <li>Consider financial, social, environmental impact</li>
+      <li>Follow regulations even when inconvenient</li>
+    </ul>
+  </div>
+  <div class="p-card people">
+    <div class="num">Principle 2</div>
+    <h3>Team</h3>
+    <div class="core">Create a collaborative team environment built on trust and shared purpose.</div>
+    <ul class="behaviors">
+      <li>Build psychological safety</li>
+      <li>Empower decision-making at appropriate levels</li>
+      <li>Invest in team development</li>
+      <li>Celebrate contributions and diversity</li>
+    </ul>
+  </div>
+  <div class="p-card people">
+    <div class="num">Principle 3</div>
+    <h3>Stakeholders</h3>
+    <div class="core">Engage stakeholders proactively to understand needs and align expectations.</div>
+    <ul class="behaviors">
+      <li>Identify stakeholders early</li>
+      <li>Communicate continuously</li>
+      <li>Build trust through transparency</li>
+      <li>Manage expectations actively</li>
+    </ul>
+  </div>
+  <div class="p-card people">
+    <div class="num">Principle 6</div>
+    <h3>Leadership</h3>
+    <div class="core">Demonstrate leadership behaviors adapted to context and audience.</div>
+    <ul class="behaviors">
+      <li>Servant leadership is PMI's preferred model</li>
+      <li>Inspire and motivate without formal authority</li>
+      <li>Adapt style: directive, coaching, supporting, delegating</li>
+      <li>Lead ≠ manage (influence vs. organize)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="group-title approach">🟣 Approach-Focused — How you structure and adapt</div>
+<div class="principle-grid">
+  <div class="p-card approach">
+    <div class="num">Principle 5</div>
+    <h3>Systems Thinking</h3>
+    <div class="core">Recognize, evaluate, and respond to the dynamic interactions within and around the project.</div>
+    <ul class="behaviors">
+      <li>See the project as part of a larger system</li>
+      <li>Understand ripple effects of decisions</li>
+      <li>Consider cause-and-effect relationships</li>
+      <li>Balance competing constraints holistically</li>
+    </ul>
+  </div>
+  <div class="p-card approach">
+    <div class="num">Principle 7</div>
+    <h3>Tailoring</h3>
+    <div class="core">Adapt the approach based on the project's unique context.</div>
+    <ul class="behaviors">
+      <li>No one-size-fits-all methodology</li>
+      <li>Consider: size, complexity, industry, culture</li>
+      <li>Tailor processes, tools, techniques, governance</li>
+      <li>Balance rigor with agility</li>
+    </ul>
+  </div>
+  <div class="p-card approach">
+    <div class="num">Principle 9</div>
+    <h3>Complexity</h3>
+    <div class="core">Navigate complexity by continuously evaluating and adapting.</div>
+    <ul class="behaviors">
+      <li>Recognize sources: human behavior, ambiguity, technology</li>
+      <li>Use iterative approaches for high complexity</li>
+      <li>Expect emergent challenges</li>
+      <li>Simplify where possible</li>
+    </ul>
+  </div>
+  <div class="p-card approach">
+    <div class="num">Principle 11</div>
+    <h3>Adaptability & Resilience</h3>
+    <div class="core">Build adaptability and resilience into the organization and project team.</div>
+    <ul class="behaviors">
+      <li>Embrace change as an opportunity</li>
+      <li>Learn from setbacks and failures</li>
+      <li>Build capacity to recover quickly</li>
+      <li>Maintain flexibility in plans and processes</li>
+    </ul>
+  </div>
+</div>
+
+<div class="group-title outcome">🔴 Outcome-Focused — What you deliver</div>
+<div class="principle-grid">
+  <div class="p-card outcome">
+    <div class="num">Principle 4</div>
+    <h3>Value</h3>
+    <div class="core">Focus on value — outcomes and benefits, not just deliverables.</div>
+    <ul class="behaviors">
+      <li>Outcomes over outputs</li>
+      <li>Continuously assess value delivery</li>
+      <li>Deliver incrementally when possible</li>
+      <li>Align with business objectives</li>
+    </ul>
+  </div>
+  <div class="p-card outcome">
+    <div class="num">Principle 8</div>
+    <h3>Quality</h3>
+    <div class="core">Build quality into processes and deliverables.</div>
+    <ul class="behaviors">
+      <li>Prevention over inspection</li>
+      <li>QA (process) vs QC (deliverable)</li>
+      <li>Understand cost of quality (CoQ)</li>
+      <li>PDCA cycle: Plan-Do-Check-Act</li>
+    </ul>
+  </div>
+  <div class="p-card outcome">
+    <div class="num">Principle 10</div>
+    <h3>Risk</h3>
+    <div class="core">Continually evaluate exposure to risk, both threats and opportunities.</div>
+    <ul class="behaviors">
+      <li>Proactive, not reactive</li>
+      <li>Address threats AND opportunities</li>
+      <li>Strategies: avoid, transfer, mitigate, accept, escalate</li>
+      <li>Risk appetite guides response level</li>
+    </ul>
+  </div>
+  <div class="p-card outcome">
+    <div class="num">Principle 12</div>
+    <h3>Change</h3>
+    <div class="core">Enable change to achieve the envisioned future state.</div>
+    <ul class="behaviors">
+      <li>Prepare those impacted by change</li>
+      <li>Assess organizational readiness</li>
+      <li>Use structured change management</li>
+      <li>Sustain change through reinforcement</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ EXAM TIPS ============ -->
+<div class="section-title">💡 Exam Application Tips</div>
+
+<div class="tip-grid">
+  <div class="tip-card">
+    <h4>You Won't Be Asked to List Them</h4>
+    <p>The exam tests <strong>application</strong>, not recall. You'll get a scenario and need to choose the answer that best reflects these principles. Understanding the spirit matters more than memorizing names.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Servant Leadership Dominates</h4>
+    <p>Principles 2 (Team), 3 (Stakeholders), and 6 (Leadership) all point to servant leadership. If an answer says "facilitate" or "empower," it's usually correct over "direct" or "decide for."</p>
+  </div>
+  <div class="tip-card">
+    <h4>Value > Deliverables</h4>
+    <p>Principle 4 (Value) is a major shift in PMBOK 7. PMI cares about <strong>outcomes and benefits</strong>, not just completing tasks. Answers focused on business value beat answers focused on scope completion.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Tailoring Is Always Valid</h4>
+    <p>Principle 7 (Tailoring) means there's rarely a "one right process." If an answer says "tailor the approach to the project context," it's often correct — especially for methodology questions.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Ethics First, Always</h4>
+    <p>Principle 1 (Stewardship) maps directly to the PMI Code of Ethics. In any ethical dilemma, the answer that demonstrates <strong>honesty, responsibility, respect, and fairness</strong> wins.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Risk = Threats + Opportunities</h4>
+    <p>Principle 10 (Risk) covers both sides. Don't just think about what can go wrong — also consider what can go right. Exploit, share, and enhance are opportunity responses.</p>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">🧠 Quick Memory Aid</div>
+  <p><strong>People (4):</strong> Stewardship · Team · Stakeholders · Leadership — "STaSL" (be a Steward, build a Team, engage Stakeholders, Lead as servant)</p>
+  <p><strong>Approach (4):</strong> Systems Thinking · Tailoring · Complexity · Adaptability — "STaCA" (See the System, Tailor it, handle Complexity, stay Adaptable)</p>
+  <p><strong>Outcome (4):</strong> Value · Quality · Risk · Change — "VaQRC" (deliver Value with Quality, manage Risk, enable Change)</p>
+</div>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#ede9fe',
+      primaryTextColor: '#1c1917',
+      primaryBorderColor: '#7c3aed',
+      lineColor: '#7c3aed',
+      fontFamily: 'system-ui, sans-serif',
+      fontSize: '14px'
+    }
+  });
+</script>
+
+<!-- ===== 03-pmi-mindset.html ===== -->
+<div class="sheet-break"></div>
+
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>🧠 PMI Mindset Decision Tree</h1>
+  <div class="subtitle">"What would PMI want me to do?" — The framework for answering every scenario question</div>
+  <div class="domain-badge">All Domains · Exam Strategy · Most Important Cheat Sheet</div>
+</div>
+
+<div class="container">
+
+<!-- ============ GOLDEN RULE ============ -->
+<div class="golden-rule">
+  <div class="emoji">⭐</div>
+  <h2>The Golden Rule</h2>
+  <p>Always ask: <strong>"What would PMI want me to do?"</strong> — Not what you'd do in real life. Not what's fastest. What does PMI's framework say is RIGHT?</p>
+</div>
+
+<!-- ============ MAIN DECISION TREE ============ -->
+<div class="section-title" style="margin-top:0">🌳 Scenario Question Decision Tree</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TD
+  START["📋 Read the scenario question"]
+  START --> LAST["Read the LAST sentence first<br/><i>It tells you what's being asked</i>"]
+  LAST --> TYPE{"What type of<br/>situation is it?"}
+
+  TYPE -->|"Ethical issue"| ETHICS["🛡️ <b>Ethics First</b><br/>Report it. Always.<br/>Honesty > loyalty > convenience"]
+  TYPE -->|"Change requested"| CHANGE["📝 <b>Follow Change Control</b><br/>1. Assess impact<br/>2. Submit change request<br/>3. CCB reviews<br/>4. Update plans if approved"]
+  TYPE -->|"Problem discovered"| PROBLEM["🔍 <b>Assess Before Acting</b><br/>1. Identify the problem<br/>2. Gather information<br/>3. Find root cause<br/>4. Evaluate options<br/>5. THEN take action"]
+  TYPE -->|"Team conflict"| CONFLICT["🤝 <b>Facilitate, Don't Dictate</b><br/>Collaborate/Problem Solve<br/>is almost always the answer"]
+  TYPE -->|"Stakeholder issue"| STAKE["📡 <b>Engage & Communicate</b><br/>Understand their needs<br/>Manage expectations<br/>Build relationships"]
+  TYPE -->|"Risk identified"| RISK["⚠️ <b>Be Proactive</b><br/>Analyze the risk<br/>Plan a response<br/>Update the risk register"]
+  TYPE -->|"Methodology question"| METHOD["🛤️ <b>Tailor to Context</b><br/>No one-size-fits-all<br/>Consider project characteristics<br/>Hybrid is often valid"]
+
+  ETHICS --> VERIFY{"Does your answer<br/>reflect servant leadership?"}
+  CHANGE --> VERIFY
+  PROBLEM --> VERIFY
+  CONFLICT --> VERIFY
+  STAKE --> VERIFY
+  RISK --> VERIFY
+  METHOD --> VERIFY
+
+  VERIFY -->|"Yes"| GOOD["✅ <b>Likely correct!</b><br/>Facilitate > Direct<br/>Empower > Control<br/>Assess > React"]
+  VERIFY -->|"No"| RETHINK["🔄 <b>Reconsider</b><br/>PMI prefers the answer that<br/>serves the team and follows process"]
+
+  style START fill:#dcfce7,stroke:#16a34a,color:#14532d
+  style TYPE fill:#fef3c7,stroke:#b45309,color:#78350f
+  style ETHICS fill:#ffe4e6,stroke:#e11d48,color:#881337
+  style CHANGE fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+  style PROBLEM fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+  style CONFLICT fill:#fef3c7,stroke:#b45309,color:#78350f
+  style STAKE fill:#fce7f3,stroke:#c026d3,color:#701a75
+  style RISK fill:#fff7ed,stroke:#ea580c,color:#7c2d12
+  style METHOD fill:#ecfdf5,stroke:#0d9488,color:#134e4a
+  style VERIFY fill:#f5f5f4,stroke:#78716c,color:#1c1917
+  style GOOD fill:#dcfce7,stroke:#16a34a,color:#14532d
+  style RETHINK fill:#fef3c7,stroke:#b45309,color:#78350f
+  </pre>
+</div>
+
+<!-- ============ CHANGE CONTROL FLOW ============ -->
+<div class="section-title">📝 Change Control Process (Memorize This Flow)</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  A["Change<br/>identified"] --> B["Assess<br/>impact"]
+  B --> C["Submit<br/>change request"]
+  C --> D["CCB<br/>reviews"]
+  D -->|"Approved"| E["Update plans<br/>& baselines"]
+  D -->|"Rejected"| F["Document<br/>decision"]
+  D -->|"Deferred"| G["Log for<br/>later review"]
+  E --> H["Communicate<br/>to stakeholders"]
+  F --> H
+  G --> H
+
+  style A fill:#dbeafe,stroke:#2563eb
+  style B fill:#ede9fe,stroke:#7c3aed
+  style C fill:#fef3c7,stroke:#b45309
+  style D fill:#fce7f3,stroke:#c026d3
+  style E fill:#dcfce7,stroke:#16a34a
+  style F fill:#ffe4e6,stroke:#e11d48
+  style G fill:#fff7ed,stroke:#ea580c
+  style H fill:#dcfce7,stroke:#16a34a
+  </pre>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tip</div>
+  <p>The answer is almost NEVER "make the change immediately." It's always "assess the impact" or "submit a change request." Even for small changes — PMI says follow the process.</p>
+</div>
+
+<!-- ============ 10 RULES ============ -->
+<div class="section-title">📜 The 10 PMI Mindset Rules</div>
+
+<div class="rules-grid">
+  <div class="rule-card">
+    <div class="rule-num">Rule 1</div>
+    <h3>🤲 Servant Leadership Is the Default</h3>
+    <table class="instead-table">
+      <tr><td>Tell the team what to do</td><td>Facilitate a discussion</td></tr>
+      <tr><td>Make decisions for the team</td><td>Empower the team to decide</td></tr>
+      <tr><td>Solve problems yourself</td><td>Coach the team to find solutions</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 2</div>
+    <h3>📋 Always Follow the Process</h3>
+    <table class="instead-table">
+      <tr><td>Make the change immediately</td><td>Submit a change request</td></tr>
+      <tr><td>Approve the change yourself</td><td>Have the CCB review it</td></tr>
+      <tr><td>Skip analysis for small changes</td><td>Assess impact regardless</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 3</div>
+    <h3>🔍 Assess Before Acting</h3>
+    <table class="instead-table">
+      <tr><td>Jump to a solution</td><td>Analyze the situation first</td></tr>
+      <tr><td>Fix the symptom</td><td>Find the root cause</td></tr>
+      <tr><td>Act on assumptions</td><td>Gather data and facts</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 4</div>
+    <h3>🚫 Never Gold Plate</h3>
+    <table class="instead-table">
+      <tr><td>Add extra features "for free"</td><td>Deliver only what's in scope</td></tr>
+      <tr><td>Exceed requirements to impress</td><td>Meet requirements precisely</td></tr>
+      <tr><td>Assume the customer wants more</td><td>Ask the customer what they need</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 5</div>
+    <h3>📢 Communicate Proactively</h3>
+    <table class="instead-table">
+      <tr><td>Wait for people to ask</td><td>Share information proactively</td></tr>
+      <tr><td>Hide bad news</td><td>Report transparently</td></tr>
+      <tr><td>Assume people know</td><td>Confirm understanding</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 6</div>
+    <h3>📡 Engage Stakeholders Early & Often</h3>
+    <table class="instead-table">
+      <tr><td>Involve stakeholders at the end</td><td>Engage from the start</td></tr>
+      <tr><td>Ignore resistant stakeholders</td><td>Understand their concerns</td></tr>
+      <tr><td>Communicate only when required</td><td>Maintain continuous engagement</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 7</div>
+    <h3>🛡️ Ethics First, Always</h3>
+    <table class="instead-table">
+      <tr><td>Cover up a mistake</td><td>Report it honestly</td></tr>
+      <tr><td>Accept a gift from a vendor</td><td>Decline and report it</td></tr>
+      <tr><td>Falsify reports to look good</td><td>Report actual status</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 8</div>
+    <h3>📜 The Project Charter Is Sacred</h3>
+    <table class="instead-table">
+      <tr><td>Start work without a charter</td><td>Get the charter signed first</td></tr>
+      <tr><td>Accept verbal authorization</td><td>Require formal documentation</td></tr>
+      <tr><td>Let the sponsor bypass the PM</td><td>Reference the charter authority</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 9</div>
+    <h3>⚠️ Risk Management Is Proactive</h3>
+    <table class="instead-table">
+      <tr><td>Deal with risks when they happen</td><td>Identify and plan responses early</td></tr>
+      <tr><td>Ignore low-probability risks</td><td>Document all identified risks</td></tr>
+      <tr><td>Only think about threats</td><td>Also identify opportunities</td></tr>
+    </table>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 10</div>
+    <h3>📝 Document Everything</h3>
+    <table class="instead-table">
+      <tr><td>Rely on verbal agreements</td><td>Document decisions formally</td></tr>
+      <tr><td>Skip lessons learned</td><td>Capture lessons throughout</td></tr>
+      <tr><td>Trust memory for decisions</td><td>Update project artifacts</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ COMMON TRAPS ============ -->
+<div class="section-title">🪤 Common Exam Traps</div>
+
+<div class="trap-grid">
+  <div class="trap-card">
+    <h4>🪤 The "Real World" Trap</h4>
+    <p>You know what you'd do in real life — but the exam tests what <strong>PMI</strong> says to do. Real-world shortcuts are wrong answers.</p>
+    <span class="correct">→ Always think "What would PMI want?"</span>
+  </div>
+  <div class="trap-card">
+    <h4>🪤 The "Escalate Immediately" Trap</h4>
+    <p>Escalating to the sponsor or management is tempting but usually premature. PMI wants you to handle it first.</p>
+    <span class="correct">→ Assess and attempt resolution before escalating</span>
+  </div>
+  <div class="trap-card">
+    <h4>🪤 The "Take Action Now" Trap</h4>
+    <p>Action-oriented answers feel right but skip the assessment step. PMI always wants analysis first.</p>
+    <span class="correct">→ Analyze → Plan → Act (in that order)</span>
+  </div>
+  <div class="trap-card">
+    <h4>🪤 The "Authority" Trap</h4>
+    <p>Answers where the PM makes unilateral decisions sound decisive but violate servant leadership.</p>
+    <span class="correct">→ Facilitate team decisions, don't dictate</span>
+  </div>
+  <div class="trap-card">
+    <h4>🪤 The "Ignore and Continue" Trap</h4>
+    <p>Ignoring a problem, risk, or stakeholder concern is never the right answer on the PMP exam.</p>
+    <span class="correct">→ Address every issue through the proper process</span>
+  </div>
+  <div class="trap-card">
+    <h4>🪤 The "Overtime" Trap</h4>
+    <p>Asking the team to work overtime to absorb a change sounds practical but violates team well-being principles.</p>
+    <span class="correct">→ Follow change control, adjust the plan properly</span>
+  </div>
+</div>
+
+<!-- ============ EXAM DAY QUICK REFERENCE ============ -->
+<div class="section-title">⚡ Exam Day Quick Reference</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  subgraph timing ["⏱️ TIMING"]
+    T1["180 questions<br/>230 minutes"]
+    T2["~76 sec<br/>per question"]
+    T3["Flag & move on<br/>if > 2 min"]
+  end
+
+  subgraph breaks ["☕ BREAKS"]
+    B1["Break 1<br/>After Q60"]
+    B2["Break 2<br/>After Q120"]
+    B3["Take BOTH<br/>breaks!"]
+  end
+
+  subgraph strategy ["🎯 STRATEGY"]
+    S1["Read last<br/>sentence first"]
+    S2["Eliminate 2<br/>wrong answers"]
+    S3["Choose between<br/>remaining 2"]
+  end
+
+  style timing fill:#dbeafe,stroke:#2563eb
+  style breaks fill:#dcfce7,stroke:#16a34a
+  style strategy fill:#fef3c7,stroke:#b45309
+  </pre>
+</div>
+
+<div class="callout">
+  <div class="callout-title">🧠 The 3-Second Filter</div>
+  <p>For every answer choice, ask these three questions in order:</p>
+  <p>1. <strong>Is it ethical?</strong> If not, eliminate it.</p>
+  <p>2. <strong>Does it follow the process?</strong> If not, eliminate it.</p>
+  <p>3. <strong>Does it serve the team/stakeholders?</strong> If yes, it's probably correct.</p>
+</div>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#dcfce7',
+      primaryTextColor: '#1c1917',
+      primaryBorderColor: '#16a34a',
+      lineColor: '#16a34a',
+      secondaryColor: '#dbeafe',
+      tertiaryColor: '#ede9fe',
+      fontFamily: 'system-ui, sans-serif',
+      fontSize: '13px'
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis',
+      padding: 15,
+      nodeSpacing: 25,
+      rankSpacing: 40
+    }
+  });
+</script>
+
+<!-- ===== 04-risk-responses.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>⚠️ Risk Response Strategy Grid</h1>
+  <div class="subtitle">Threats vs Opportunities — All response strategies with examples</div>
+  <div class="domain-badge">Process Domain · Risk Management</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">🔄 Risk Management Process Flow</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  A["Identify<br/>Risks"] --> B["Qualitative<br/>Analysis"]
+  B --> C["Quantitative<br/>Analysis"]
+  C --> D["Plan Risk<br/>Responses"]
+  D --> E["Implement<br/>Responses"]
+  E --> F["Monitor<br/>Risks"]
+  F -->|"New risks<br/>identified"| A
+
+  style A fill:#ffe4e6,stroke:#e11d48
+  style B fill:#fef3c7,stroke:#b45309
+  style C fill:#ede9fe,stroke:#7c3aed
+  style D fill:#dbeafe,stroke:#2563eb
+  style E fill:#dcfce7,stroke:#16a34a
+  style F fill:#fce7f3,stroke:#c026d3
+  </pre>
+</div>
+
+<div class="section-title">🛡️ Threat Responses vs 🌟 Opportunity Responses</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TD
+  R["⚠️ RISK IDENTIFIED"]
+  R -->|"Negative impact"| T["🛡️ THREAT"]
+  R -->|"Positive impact"| O["🌟 OPPORTUNITY"]
+
+  T --> TA["<b>Avoid</b><br/>Eliminate the threat"]
+  T --> TT["<b>Transfer</b><br/>Shift to a third party"]
+  T --> TM["<b>Mitigate</b><br/>Reduce probability/impact"]
+  T --> TAc["<b>Accept</b><br/>Acknowledge & budget"]
+  T --> TE["<b>Escalate</b><br/>Above PM authority"]
+
+  O --> OE["<b>Exploit</b><br/>Make it happen"]
+  O --> OS["<b>Share</b><br/>Partner to capture"]
+  O --> OEn["<b>Enhance</b><br/>Increase probability/impact"]
+  O --> OA["<b>Accept</b><br/>Take it if it comes"]
+  O --> OEs["<b>Escalate</b><br/>Above PM authority"]
+
+  style R fill:#fef3c7,stroke:#b45309
+  style T fill:#fef2f2,stroke:#dc2626
+  style O fill:#f0fdf4,stroke:#16a34a
+  style TA fill:#fef2f2,stroke:#dc2626
+  style TT fill:#fef2f2,stroke:#dc2626
+  style TM fill:#fef2f2,stroke:#dc2626
+  style TAc fill:#fef2f2,stroke:#dc2626
+  style TE fill:#fef2f2,stroke:#dc2626
+  style OE fill:#f0fdf4,stroke:#16a34a
+  style OS fill:#f0fdf4,stroke:#16a34a
+  style OEn fill:#f0fdf4,stroke:#16a34a
+  style OA fill:#f0fdf4,stroke:#16a34a
+  style OEs fill:#f0fdf4,stroke:#16a34a
+  </pre>
+</div>
+
+<div class="two-col">
+  <div>
+    <div class="col-header threat">🛡️ Threat Responses (Negative Risks)</div>
+    <div class="strat-card threat">
+      <h3>🚫 Avoid</h3>
+      <div class="def">Eliminate the threat entirely by changing the project plan.</div>
+      <div class="example"><strong>Example:</strong> Remove a risky feature from scope. Change technology to one the team knows. Extend the timeline to avoid resource conflicts.</div>
+    </div>
+    <div class="strat-card threat">
+      <h3>↗️ Transfer</h3>
+      <div class="def">Shift the negative impact to a third party (doesn't eliminate it).</div>
+      <div class="example"><strong>Example:</strong> Buy insurance. Use a fixed-price contract (transfers cost risk to seller). Outsource a risky component to a specialist vendor.</div>
+    </div>
+    <div class="strat-card threat">
+      <h3>📉 Mitigate</h3>
+      <div class="def">Reduce the probability and/or impact to an acceptable level.</div>
+      <div class="example"><strong>Example:</strong> Add testing phases. Build a prototype first. Cross-train team members. Add redundancy to critical systems.</div>
+    </div>
+  </div>
+  <div>
+    <div class="col-header opp">🌟 Opportunity Responses (Positive Risks)</div>
+    <div class="strat-card opp">
+      <h3>🎯 Exploit</h3>
+      <div class="def">Ensure the opportunity definitely happens.</div>
+      <div class="example"><strong>Example:</strong> Assign the best resources to ensure early delivery. Use proven technology to guarantee quality bonus.</div>
+    </div>
+    <div class="strat-card opp">
+      <h3>🤝 Share</h3>
+      <div class="def">Partner with a third party better positioned to capture the opportunity.</div>
+      <div class="example"><strong>Example:</strong> Form a joint venture. Partner with a company that has the expertise to deliver faster.</div>
+    </div>
+    <div class="strat-card opp">
+      <h3>📈 Enhance</h3>
+      <div class="def">Increase the probability and/or impact of the opportunity.</div>
+      <div class="example"><strong>Example:</strong> Add resources to finish early and earn a bonus. Invest in training to increase quality.</div>
+    </div>
+  </div>
+</div>
+
+<div class="two-col" style="margin-top:0">
+  <div class="shared-card">
+    <h3>✋ Accept (Both Threats & Opportunities)</h3>
+    <div class="def">Acknowledge the risk but take no proactive action. <strong>Active acceptance:</strong> set aside a contingency reserve. <strong>Passive acceptance:</strong> deal with it if it happens. Used when the risk is low priority or the cost of response exceeds the impact.</div>
+  </div>
+  <div class="shared-card">
+    <h3>⬆️ Escalate (Both Threats & Opportunities)</h3>
+    <div class="def">The risk is outside the project's scope or the PM's authority. Escalate to program, portfolio, or organizational level. The PM still tracks it but doesn't own the response.</div>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>Mirror pattern:</strong> Avoid↔Exploit, Transfer↔Share, Mitigate↔Enhance, Accept↔Accept, Escalate↔Escalate.</p>
+  <p><strong>Transfer ≠ eliminate.</strong> The risk still exists — someone else owns it. Insurance is the classic example.</p>
+  <p><strong>Residual risk:</strong> Risk remaining after a response is implemented. Always document it.</p>
+  <p><strong>Secondary risk:</strong> A new risk created by implementing a risk response. Always analyze for these.</p>
+  <p><strong>Workaround:</strong> An unplanned response to a risk that has occurred (wasn't identified or accepted). Different from contingency plan (planned response to identified risk).</p>
+</div>
+
+<div class="section-title">📊 Qualitative vs Quantitative Analysis</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  subgraph qual ["📋 QUALITATIVE (All Projects)"]
+    Q1["Probability ×<br/>Impact Matrix"]
+    Q2["Risk categorization<br/>(RBS)"]
+    Q3["Risk urgency<br/>assessment"]
+    Q4["Output: Prioritized<br/>risk list"]
+  end
+  subgraph quant ["📊 QUANTITATIVE (Large/Complex Only)"]
+    N1["Monte Carlo<br/>simulation"]
+    N2["Decision tree<br/>analysis"]
+    N3["Sensitivity<br/>analysis (tornado)"]
+    N4["Output: Probabilistic<br/>forecasts"]
+  end
+
+  style qual fill:#fef3c7,stroke:#b45309
+  style quant fill:#ede9fe,stroke:#7c3aed
+  </pre>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#ffe4e6',primaryTextColor:'#1c1917',primaryBorderColor:'#e11d48',lineColor:'#e11d48',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 05-conflict-resolution.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>🤝 Conflict Resolution Quick Pick</h1>
+  <div class="subtitle">5 techniques ranked by PMI preference — when to use each one</div>
+  <div class="domain-badge">People Domain (42%) · Task 1: Manage Conflict</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">📊 PMI Preference Spectrum</div>
+<div class="spectrum">
+  <div class="s1">Collaborate<br/>⭐ Best</div>
+  <div class="s2">Compromise</div>
+  <div class="s3">Smooth</div>
+  <div class="s4">Force</div>
+  <div class="s5">Withdraw<br/>⚠️ Worst</div>
+</div>
+<div class="spectrum-label">
+  <span>← Win-Win (PMI Preferred)</span>
+  <span>Lose-Lose →</span>
+</div>
+
+<div class="section-title">🔧 The 5 Techniques</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TD
+  C["🤝 CONFLICT ARISES"]
+  C --> Q1{"Is there time<br/>to work through it?"}
+  Q1 -->|"Yes"| Q2{"Can both parties<br/>get what they need?"}
+  Q1 -->|"No — emergency"| FORCE["⚡ <b>Force/Direct</b><br/>Push one viewpoint"]
+  Q2 -->|"Yes"| COLLAB["⭐ <b>Collaborate</b><br/>Work together for win-win"]
+  Q2 -->|"No — but can meet halfway"| COMP["🤝 <b>Compromise</b><br/>Each gives up something"]
+  Q2 -->|"No — relationship > issue"| SMOOTH["😊 <b>Smooth/Accommodate</b><br/>Emphasize agreement"]
+  Q2 -->|"No — need cooling off"| WITHDRAW["🚶 <b>Withdraw/Avoid</b><br/>Temporary retreat"]
+
+  style C fill:#ede9fe,stroke:#7c3aed
+  style Q1 fill:#fef3c7,stroke:#b45309
+  style Q2 fill:#fef3c7,stroke:#b45309
+  style COLLAB fill:#dcfce7,stroke:#16a34a
+  style COMP fill:#dbeafe,stroke:#2563eb
+  style SMOOTH fill:#fef3c7,stroke:#b45309
+  style FORCE fill:#fff7ed,stroke:#ea580c
+  style WITHDRAW fill:#fef2f2,stroke:#dc2626
+  </pre>
+</div>
+
+<div class="tech-grid">
+  <div class="tech-card">
+    <div class="rank">⭐ PMI's #1 Preferred</div>
+    <h3>Collaborate / Problem Solve</h3>
+    <div class="aka">Also: Confront, Integrate</div>
+    <div class="def">Work together to find a solution that fully satisfies both parties. Requires open dialogue, trust, and time.</div>
+    <div class="when"><strong>When to use:</strong> When the issue is important to both parties, when there's time, when you need a lasting solution, when the relationship matters long-term.</div>
+    <div class="pmi-badge">Win-Win → Almost always the exam answer</div>
+  </div>
+  <div class="tech-card">
+    <div class="rank">#2 — Good Alternative</div>
+    <h3>Compromise / Reconcile</h3>
+    <div class="aka">Also: Negotiate, Bargain</div>
+    <div class="def">Each party gives up something to reach a mutually acceptable solution. Neither fully satisfied.</div>
+    <div class="when"><strong>When to use:</strong> When both parties have equal power, when a temporary solution is needed, when collaboration has failed, when time pressure exists.</div>
+  </div>
+  <div class="tech-card">
+    <div class="rank">#3 — Situational</div>
+    <h3>Smooth / Accommodate</h3>
+    <div class="aka">Also: Concede, Yield</div>
+    <div class="def">Emphasize areas of agreement and de-emphasize differences. Maintains harmony but doesn't solve the root issue.</div>
+    <div class="when"><strong>When to use:</strong> When the relationship is more important than the issue, when the issue is minor, when you need to build goodwill for a future negotiation.</div>
+  </div>
+  <div class="tech-card">
+    <div class="rank">#4 — Emergency Only</div>
+    <h3>Force / Direct</h3>
+    <div class="aka">Also: Compete, Command</div>
+    <div class="def">Push one viewpoint at the expense of another. Uses authority or power to resolve quickly.</div>
+    <div class="when"><strong>When to use:</strong> Emergencies, safety issues, when a quick decision is critical, when you know you're right and the stakes are high. <strong>Rarely correct on the exam.</strong></div>
+  </div>
+  <div class="tech-card">
+    <div class="rank">#5 — Last Resort</div>
+    <h3>Withdraw / Avoid</h3>
+    <div class="aka">Also: Retreat, Postpone</div>
+    <div class="def">Retreat from the conflict. Doesn't resolve anything — just delays it.</div>
+    <div class="when"><strong>When to use:</strong> When emotions are too high (cooling-off period), when the issue is trivial, when you have no chance of winning, when someone else can resolve it better.</div>
+    <div class="pmi-badge">⚠️ Almost never the exam answer</div>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Pattern</div>
+  <p>If <strong>Collaborate/Problem Solve</strong> is an answer choice, it's almost always correct — unless the scenario specifically describes an emergency (→ Force) or says collaboration already failed (→ Compromise).</p>
+  <p><strong>Thomas-Kilmann Model:</strong> Maps these 5 techniques on two axes — assertiveness (concern for self) and cooperativeness (concern for others). Collaborate = high on both.</p>
+</div>
+
+<div class="section-title">🎯 Quick Scenario Practice</div>
+<div class="scenario-grid">
+  <div class="scenario">
+    <div class="q">"Two developers disagree on the architecture. The PM should..."</div>
+    <div class="a">→ Collaborate: Facilitate a discussion to find the best solution together.</div>
+  </div>
+  <div class="scenario">
+    <div class="q">"A critical production bug needs an immediate fix. Two team members propose different approaches..."</div>
+    <div class="a">→ Force: Make the call — it's an emergency. Speed matters more than consensus.</div>
+  </div>
+  <div class="scenario">
+    <div class="q">"Two stakeholders want different features prioritized. Budget allows only one..."</div>
+    <div class="a">→ Compromise: Find a middle ground — perhaps partial implementation of both, or phased delivery.</div>
+  </div>
+  <div class="scenario">
+    <div class="q">"A team member is upset about a minor process change. The PM should..."</div>
+    <div class="a">→ Smooth: Acknowledge their concern, emphasize shared goals, maintain the relationship.</div>
+  </div>
+  <div class="scenario">
+    <div class="q">"Two team members had a heated argument. Emotions are running high..."</div>
+    <div class="a">→ Withdraw (temporarily): Let emotions cool, then revisit with Collaborate.</div>
+  </div>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#ede9fe',primaryTextColor:'#1c1917',primaryBorderColor:'#7c3aed',lineColor:'#7c3aed',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 06-scrum-sprint.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>🔄 Scrum Sprint Cycle</h1>
+  <div class="subtitle">Roles, events, artifacts, and timeboxes — the complete Scrum framework</div>
+  <div class="domain-badge">Process Domain · Agile · ~50% of Exam</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">🔄 Sprint Cycle Flow</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  PB["📋 <b>Product Backlog</b><br/><i>Owned by PO</i><br/>Prioritized list of<br/>all desired work"]
+  SP["📝 <b>Sprint Planning</b><br/><i>⏱ 8hr max (4wk sprint)</i><br/>Select items → create<br/>Sprint Backlog + Sprint Goal"]
+  SPRINT["🏃 <b>Sprint</b><br/><i>⏱ 1–4 weeks (typically 2)</i><br/>Team builds the<br/>increment"]
+  DS["☀️ <b>Daily Scrum</b><br/><i>⏱ 15 min</i><br/>Sync, plan next 24hr<br/>Inspect progress"]
+  SR["🔍 <b>Sprint Review</b><br/><i>⏱ 4hr max</i><br/>Demo increment<br/>Get feedback"]
+  RETRO["🔄 <b>Retrospective</b><br/><i>⏱ 3hr max</i><br/>Inspect process<br/>Plan improvements"]
+  INC["📦 <b>Increment</b><br/><i>Potentially shippable</i><br/>Meets Definition<br/>of Done"]
+
+  PB --> SP
+  SP --> SPRINT
+  DS -.->|"Every day<br/>during sprint"| SPRINT
+  SPRINT --> INC
+  INC --> SR
+  SR --> RETRO
+  RETRO -->|"Next sprint"| SP
+
+  style PB fill:#dbeafe,stroke:#2563eb
+  style SP fill:#fef3c7,stroke:#b45309
+  style SPRINT fill:#dcfce7,stroke:#16a34a
+  style DS fill:#fef3c7,stroke:#b45309
+  style SR fill:#ede9fe,stroke:#7c3aed
+  style RETRO fill:#fce7f3,stroke:#c026d3
+  style INC fill:#dcfce7,stroke:#16a34a
+  </pre>
+</div>
+
+<div class="section-title">👥 The 3 Scrum Roles</div>
+<div class="three-col">
+  <div class="role-card">
+    <h3>🎯 Product Owner</h3>
+    <ul>
+      <li>Owns and prioritizes the Product Backlog</li>
+      <li>Defines user stories and acceptance criteria</li>
+      <li>Maximizes the value of the product</li>
+      <li>Single person (not a committee)</li>
+      <li>Makes scope decisions</li>
+      <li>Represents stakeholders and customers</li>
+    </ul>
+  </div>
+  <div class="role-card">
+    <h3>🛡️ Scrum Master</h3>
+    <ul>
+      <li>Servant leader for the team</li>
+      <li>Removes impediments</li>
+      <li>Coaches the team on Scrum practices</li>
+      <li>Facilitates events</li>
+      <li>Shields team from distractions</li>
+      <li>Does NOT assign work or manage the team</li>
+    </ul>
+  </div>
+  <div class="role-card">
+    <h3>💻 Development Team</h3>
+    <ul>
+      <li>Self-organizing — decides HOW to do the work</li>
+      <li>Cross-functional — has all skills needed</li>
+      <li>Ideal size: 3–9 members</li>
+      <li>No sub-teams or hierarchies</li>
+      <li>Collectively accountable for the increment</li>
+      <li>Pulls work from Sprint Backlog</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title">📅 The 5 Scrum Events</div>
+<div class="event-grid">
+  <div class="event-card">
+    <h3>🏃 Sprint</h3>
+    <div class="timebox">⏱ 1–4 weeks (typically 2)</div>
+    <div class="desc">The container for all other events. A fixed timebox during which the team creates a potentially shippable increment. Sprint length doesn't change once set.</div>
+    <div class="who"><strong>Key rule:</strong> No changes that endanger the Sprint Goal. Scope may be clarified with PO.</div>
+  </div>
+  <div class="event-card">
+    <h3>📝 Sprint Planning</h3>
+    <div class="timebox">⏱ 8hr max for 4-week sprint</div>
+    <div class="desc"><strong>What</strong> can be done this sprint? <strong>How</strong> will it get done? Team selects items from Product Backlog and creates the Sprint Backlog.</div>
+    <div class="who"><strong>Who:</strong> Entire Scrum Team. <strong>Output:</strong> Sprint Goal + Sprint Backlog.</div>
+  </div>
+  <div class="event-card">
+    <h3>☀️ Daily Scrum</h3>
+    <div class="timebox">⏱ 15 minutes max</div>
+    <div class="desc">Quick sync: What did I do? What will I do? Any impediments? Same time, same place every day. Not a status report to the Scrum Master.</div>
+    <div class="who"><strong>Who:</strong> Development Team (SM facilitates if needed, PO optional).</div>
+  </div>
+  <div class="event-card">
+    <h3>🔍 Sprint Review</h3>
+    <div class="timebox">⏱ 4hr max for 4-week sprint</div>
+    <div class="desc">Demo the increment to stakeholders. Gather feedback. Discuss what's next. Adapt the Product Backlog based on feedback.</div>
+    <div class="who"><strong>Who:</strong> Scrum Team + stakeholders. <strong>Not</strong> a sign-off meeting.</div>
+  </div>
+  <div class="event-card">
+    <h3>🔄 Sprint Retrospective</h3>
+    <div class="timebox">⏱ 3hr max for 4-week sprint</div>
+    <div class="desc">Inspect the process: What went well? What didn't? What to improve? Create actionable improvement items for next sprint.</div>
+    <div class="who"><strong>Who:</strong> Scrum Team only (no stakeholders). <strong>Last event</strong> in the sprint.</div>
+  </div>
+</div>
+
+<div class="section-title">📦 The 3 Scrum Artifacts</div>
+<div class="artifact-grid">
+  <div class="artifact">
+    <div class="icon">📋</div>
+    <h3>Product Backlog</h3>
+    <div class="desc">Ordered list of everything needed in the product. Single source of requirements. Continuously refined.</div>
+    <div class="owner">Owner: Product Owner</div>
+  </div>
+  <div class="artifact">
+    <div class="icon">📝</div>
+    <h3>Sprint Backlog</h3>
+    <div class="desc">Items selected for the sprint + plan for delivering them. Owned by the Dev Team. Updated daily.</div>
+    <div class="owner">Owner: Development Team</div>
+  </div>
+  <div class="artifact">
+    <div class="icon">📦</div>
+    <h3>Increment</h3>
+    <div class="desc">Sum of all completed backlog items. Must meet the Definition of Done. Potentially shippable every sprint.</div>
+    <div class="owner">Commitment: Definition of Done</div>
+  </div>
+</div>
+
+<div class="section-title">📊 Key Agile Metrics</div>
+<div class="metric-grid">
+  <div class="metric"><h4>Velocity</h4><p>Story points completed per sprint. Used for forecasting, not performance evaluation.</p></div>
+  <div class="metric"><h4>Burn-Down Chart</h4><p>Work remaining vs time. Slopes downward. Shows if team is on track within a sprint.</p></div>
+  <div class="metric"><h4>Burn-Up Chart</h4><p>Work completed vs total scope. Shows progress AND scope changes over time.</p></div>
+  <div class="metric"><h4>Cycle Time</h4><p>Time from work started to work completed. Lower = more efficient.</p></div>
+  <div class="metric"><h4>Lead Time</h4><p>Time from request to delivery. Includes wait time. Customer-facing metric.</p></div>
+  <div class="metric"><h4>Cumulative Flow</h4><p>WIP and flow over time. Widening bands = bottleneck. Used heavily in Kanban.</p></div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>Sprint Review ≠ Retrospective.</strong> Review = inspect the product (with stakeholders). Retro = inspect the process (team only).</p>
+  <p><strong>Scrum Master ≠ Project Manager.</strong> SM is a servant leader and coach, not a task assigner or decision maker.</p>
+  <p><strong>Product Owner is ONE person.</strong> They can delegate work but are the single accountable voice for backlog priority.</p>
+  <p><strong>Definition of Done</strong> is a shared understanding of what "complete" means. If it doesn't meet DoD, it's not in the increment.</p>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#cffafe',primaryTextColor:'#1c1917',primaryBorderColor:'#0891b2',lineColor:'#0891b2',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 07-delivery-approaches.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>🛤️ Delivery Approach Selector</h1>
+  <div class="subtitle">Predictive vs Agile vs Hybrid — decision tree and comparison</div>
+  <div class="domain-badge">Process Domain · Methodology · Tailoring</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">🌳 Decision Tree: Which Approach?</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TD
+  START["🤔 Choosing a delivery approach"]
+  START --> Q1{"Are requirements<br/>well-defined and stable?"}
+  Q1 -->|"Yes — clear scope"| Q2{"Is the technology<br/>well-understood?"}
+  Q1 -->|"No — evolving"| Q3{"Is the customer<br/>available for feedback?"}
+  Q1 -->|"Partially"| HYBRID
+
+  Q2 -->|"Yes"| PRED["📐 <b>PREDICTIVE</b><br/>(Waterfall)"]
+  Q2 -->|"No — new tech"| HYBRID["🔀 <b>HYBRID</b>"]
+
+  Q3 -->|"Yes — engaged"| AGILE["🏃 <b>AGILE</b>"]
+  Q3 -->|"No — limited access"| HYBRID
+
+  PRED --> P_USE["Use when:<br/>• Construction, manufacturing<br/>• Regulatory/compliance heavy<br/>• Fixed-price contracts<br/>• Clear deliverables"]
+  AGILE --> A_USE["Use when:<br/>• Software development<br/>• Innovation/R&D<br/>• Rapid market changes<br/>• Customer collaboration"]
+  HYBRID --> H_USE["Use when:<br/>• Mixed certainty levels<br/>• Some components clear, others not<br/>• Organizational transition to agile<br/>• Large programs with sub-projects"]
+
+  style START fill:#fff7ed,stroke:#ea580c
+  style Q1 fill:#fef3c7,stroke:#b45309
+  style Q2 fill:#fef3c7,stroke:#b45309
+  style Q3 fill:#fef3c7,stroke:#b45309
+  style PRED fill:#dbeafe,stroke:#2563eb
+  style AGILE fill:#dcfce7,stroke:#16a34a
+  style HYBRID fill:#ede9fe,stroke:#7c3aed
+  style P_USE fill:#dbeafe,stroke:#2563eb
+  style A_USE fill:#dcfce7,stroke:#16a34a
+  style H_USE fill:#ede9fe,stroke:#7c3aed
+  </pre>
+</div>
+
+<div class="section-title">📊 Side-by-Side Comparison</div>
+<table class="compare-table">
+  <thead>
+    <tr><th>Dimension</th><th>📐 Predictive</th><th>🏃 Agile</th><th>🔀 Hybrid</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Requirements</td><td>Fixed upfront</td><td>Evolving, emergent</td><td>Mix of fixed and evolving</td></tr>
+    <tr><td>Planning</td><td>Detailed upfront</td><td>Just-in-time, iterative</td><td>High-level upfront + iterative detail</td></tr>
+    <tr><td>Delivery</td><td>Single delivery at end</td><td>Incremental every sprint</td><td>Phased with incremental components</td></tr>
+    <tr><td>Change</td><td>Formal change control</td><td>Backlog reprioritization</td><td>Both mechanisms</td></tr>
+    <tr><td>Customer involvement</td><td>Beginning and end</td><td>Continuous</td><td>Varies by component</td></tr>
+    <tr><td>Risk approach</td><td>Identify early, plan responses</td><td>Reduce through short iterations</td><td>Both strategies</td></tr>
+    <tr><td>Team structure</td><td>Functional, role-based</td><td>Cross-functional, self-organizing</td><td>Mixed</td></tr>
+    <tr><td>Documentation</td><td>Comprehensive</td><td>Just enough</td><td>Tailored per component</td></tr>
+    <tr><td>Success measure</td><td>Scope delivered on time/budget</td><td>Value delivered to customer</td><td>Both</td></tr>
+    <tr><td>Best for</td><td>Construction, compliance, hardware</td><td>Software, innovation, R&D</td><td>Large programs, transitions</td></tr>
+  </tbody>
+</table>
+
+<div class="section-title">🏗️ When to Use Each</div>
+<div class="approach-grid">
+  <div class="approach-card">
+    <h3>📐 Predictive (Waterfall)</h3>
+    <div class="best">Best when certainty is HIGH</div>
+    <ul>
+      <li>Requirements are clear and stable</li>
+      <li>Technology is well-understood</li>
+      <li>Regulatory/compliance requirements</li>
+      <li>Fixed-price contracts</li>
+      <li>Sequential dependencies</li>
+      <li>Construction, manufacturing, infrastructure</li>
+      <li>Stakeholders want detailed plans upfront</li>
+    </ul>
+  </div>
+  <div class="approach-card">
+    <h3>🏃 Agile</h3>
+    <div class="best">Best when uncertainty is HIGH</div>
+    <ul>
+      <li>Requirements will evolve</li>
+      <li>Customer available for frequent feedback</li>
+      <li>Need to deliver value quickly</li>
+      <li>Innovation or R&D projects</li>
+      <li>Rapid market changes</li>
+      <li>Small, co-located teams</li>
+      <li>Software and digital products</li>
+    </ul>
+  </div>
+  <div class="approach-card">
+    <h3>🔀 Hybrid</h3>
+    <div class="best">Best when it's MIXED</div>
+    <ul>
+      <li>Some components clear, others uncertain</li>
+      <li>Organization transitioning to agile</li>
+      <li>Large programs with diverse sub-projects</li>
+      <li>Need predictive governance + agile delivery</li>
+      <li>Hardware + software integration</li>
+      <li>Stakeholders need predictive reporting</li>
+      <li>Most real-world projects are hybrid</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>~50% of the exam involves agile or hybrid.</strong> Don't prep waterfall-only.</p>
+  <p><strong>Tailoring is key.</strong> PMI doesn't say one approach is always better — the right answer is "tailor to the project context."</p>
+  <p><strong>Hybrid is often the "safe" answer</strong> when the scenario describes mixed characteristics.</p>
+  <p><strong>"Iterative" ≠ "Agile".</strong> Iterative means repeating cycles. Incremental means delivering in pieces. Agile is both. Predictive can be iterative too (e.g., prototyping).</p>
+</div>
+
+<div class="section-title">🔄 Life Cycle Patterns</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  subgraph pred ["📐 PREDICTIVE"]
+    direction LR
+    P1["Initiate"] --> P2["Plan"] --> P3["Execute"] --> P4["Close"]
+  end
+  subgraph iter ["🔁 ITERATIVE"]
+    direction LR
+    I1["Cycle 1<br/>Build → Feedback"] --> I2["Cycle 2<br/>Refine → Feedback"] --> I3["Cycle 3<br/>Final → Deliver"]
+  end
+  subgraph incr ["📦 INCREMENTAL"]
+    direction LR
+    N1["Increment 1<br/>Feature A"] --> N2["Increment 2<br/>Feature B"] --> N3["Increment 3<br/>Feature C"]
+  end
+  subgraph agil ["🏃 AGILE (Iterative + Incremental)"]
+    direction LR
+    A1["Sprint 1<br/>Build + Deliver"] --> A2["Sprint 2<br/>Build + Deliver"] --> A3["Sprint 3<br/>Build + Deliver"]
+  end
+
+  style pred fill:#dbeafe,stroke:#2563eb
+  style iter fill:#fef3c7,stroke:#b45309
+  style incr fill:#fce7f3,stroke:#c026d3
+  style agil fill:#dcfce7,stroke:#16a34a
+  </pre>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#fff7ed',primaryTextColor:'#1c1917',primaryBorderColor:'#ea580c',lineColor:'#ea580c',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 08-procurement-contracts.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>📝 Procurement Contract Spectrum</h1>
+  <div class="subtitle">Contract types ranked by buyer/seller risk — from Cost Plus to Fixed Price</div>
+  <div class="domain-badge">Process Domain · Procurement Management</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">📊 Risk Spectrum</div>
+<div class="spectrum-container">
+  <div class="spectrum-labels">
+    <span class="buyer-label">🔴 Highest Buyer Risk</span>
+    <span class="seller-label">🔵 Highest Seller Risk</span>
+  </div>
+  <div class="spectrum-bar">
+    <div class="s1">CPPC</div>
+    <div class="s2">CPFF</div>
+    <div class="s3">CPIF</div>
+    <div class="s4">T&M</div>
+    <div class="s5">FPIF</div>
+    <div class="s6">FP-EPA</div>
+    <div class="s7">FFP</div>
+  </div>
+  <div class="risk-arrows">
+    <span>← Buyer pays all overruns</span>
+    <span>Seller absorbs all overruns →</span>
+  </div>
+</div>
+
+<div class="section-title">💰 Cost-Reimbursable Contracts (Buyer Risk)</div>
+<div class="contract-grid">
+  <div class="c-card cp">
+    <div class="abbr">🔴 Highest Buyer Risk</div>
+    <h3>CPPC — Cost Plus Percentage of Cost</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Very High</span><span class="seller-risk">Seller: Very Low</span></div>
+    <div class="desc">Buyer pays all costs + a percentage fee on top. The more the seller spends, the more they earn. <strong>No incentive to control costs.</strong></div>
+    <div class="example"><strong>Rarely used.</strong> Some government contracts. PMI considers this the worst contract type for the buyer.</div>
+  </div>
+  <div class="c-card cp">
+    <div class="abbr">🔴 High Buyer Risk</div>
+    <h3>CPFF — Cost Plus Fixed Fee</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: High</span><span class="seller-risk">Seller: Low</span></div>
+    <div class="desc">Buyer pays all costs + a fixed fee (doesn't change with cost overruns). Seller has some incentive to control costs since fee doesn't grow.</div>
+    <div class="example"><strong>Example:</strong> R&D project where scope is unclear. Fee is $50K regardless of final cost.</div>
+  </div>
+  <div class="c-card cp">
+    <div class="abbr">🟠 Medium-High Buyer Risk</div>
+    <h3>CPIF — Cost Plus Incentive Fee</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Medium-High</span><span class="seller-risk">Seller: Medium-Low</span></div>
+    <div class="desc">Buyer pays costs + fee adjusted by performance. If seller beats target cost, they earn a bonus. If over, fee is reduced. Shared risk via a sharing ratio.</div>
+    <div class="example"><strong>Example:</strong> Target cost $100K, sharing ratio 80/20. If actual cost is $90K, seller gets bonus from the $10K savings.</div>
+  </div>
+  <div class="c-card cp">
+    <div class="abbr">🟠 Medium Buyer Risk</div>
+    <h3>CPAF — Cost Plus Award Fee</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Medium</span><span class="seller-risk">Seller: Medium</span></div>
+    <div class="desc">Buyer pays costs + an award fee based on subjective performance evaluation. Fee amount determined by a fee evaluation board.</div>
+    <div class="example"><strong>Key difference from CPIF:</strong> Award fee is subjective (quality, timeliness), not formula-based. Buyer has more control.</div>
+  </div>
+</div>
+
+<div class="section-title">⚖️ Middle Ground</div>
+<div class="contract-grid">
+  <div class="c-card tm">
+    <div class="abbr">⚖️ Shared Risk</div>
+    <h3>T&M — Time and Materials</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Medium</span><span class="seller-risk">Seller: Medium</span></div>
+    <div class="desc">Buyer pays hourly/daily rates + materials. Open-ended — no fixed total price. Risk is shared but buyer has exposure if work takes longer than expected.</div>
+    <div class="example"><strong>Example:</strong> Consulting engagement at $200/hr. Often used when scope can't be defined upfront. Should include a "not to exceed" ceiling.</div>
+  </div>
+</div>
+
+<div class="section-title">🔵 Fixed-Price Contracts (Seller Risk)</div>
+<div class="contract-grid">
+  <div class="c-card fp">
+    <div class="abbr">🔵 Medium-Low Seller Risk</div>
+    <h3>FPIF — Fixed Price Incentive Fee</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Medium-Low</span><span class="seller-risk">Seller: Medium-High</span></div>
+    <div class="desc">Fixed price with incentive adjustments. If seller beats target cost, they share the savings. If over, they share the overrun. Has a ceiling price the buyer won't exceed.</div>
+    <div class="example"><strong>This is where PTA applies.</strong> Point of Total Assumption = the cost point where seller absorbs 100% of overruns.</div>
+  </div>
+  <div class="c-card fp">
+    <div class="abbr">🔵 High Seller Risk</div>
+    <h3>FP-EPA — Fixed Price with Economic Price Adjustment</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Low</span><span class="seller-risk">Seller: High</span></div>
+    <div class="desc">Fixed price with provisions for inflation or cost-of-living adjustments. Used for multi-year contracts where economic conditions may change.</div>
+    <div class="example"><strong>Example:</strong> 3-year construction contract with annual price adjustments tied to CPI (Consumer Price Index).</div>
+  </div>
+  <div class="c-card fp">
+    <div class="abbr">🔵 Highest Seller Risk</div>
+    <h3>FFP — Firm Fixed Price</h3>
+    <div class="risk-bar"><span class="buyer-risk">Buyer: Lowest</span><span class="seller-risk">Seller: Highest</span></div>
+    <div class="desc">Price is set and doesn't change regardless of seller's costs. Seller absorbs all overruns. <strong>Most common contract type.</strong></div>
+    <div class="example"><strong>Example:</strong> "Build this website for $50,000." If it costs the seller $60K, they eat the $10K loss. Best when scope is well-defined.</div>
+  </div>
+</div>
+
+<div class="section-title">💰 PTA Formula (FPIF Only)</div>
+<div class="pta-box">
+  <h3>Point of Total Assumption</h3>
+  <div class="formula">PTA = ((Ceiling Price − Target Price) / Buyer's Share Ratio) + Target Cost</div>
+  <div class="note">The cost point above which the <strong>seller absorbs 100%</strong> of additional costs.<br/>Only applies to <strong>Fixed Price Incentive Fee (FPIF)</strong> contracts.</div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>Memory trick:</strong> Cost Plus = Buyer risk (buyer pays costs). Fixed Price = Seller risk (seller eats overruns).</p>
+  <p><strong>FFP is most common</strong> and preferred when scope is clear. It's the simplest and lowest risk for the buyer.</p>
+  <p><strong>T&M should have a ceiling.</strong> Without a "not to exceed" clause, T&M is essentially open-ended buyer risk.</p>
+  <p><strong>CPPC is the worst for buyers</strong> — the seller is incentivized to spend MORE. Rarely used in practice.</p>
+  <p><strong>PTA only applies to FPIF.</strong> If the exam asks about PTA, it's always in the context of a fixed-price incentive fee contract.</p>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#eef2ff',primaryTextColor:'#1c1917',primaryBorderColor:'#4f46e5',lineColor:'#4f46e5',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 09-tuckman-stages.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>👥 Tuckman's Team Development Stages</h1>
+  <div class="subtitle">5 stages of team development with PM actions and leadership style at each stage</div>
+  <div class="domain-badge">People Domain (42%) · Team Building · Task 6</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">🔄 Progression Flow</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  F["🌱 <b>FORMING</b><br/>Orientation<br/><i>Polite, uncertain</i>"]
+  S["⚡ <b>STORMING</b><br/>Conflict<br/><i>Power struggles</i>"]
+  N["🤝 <b>NORMING</b><br/>Cohesion<br/><i>Trust building</i>"]
+  P["🚀 <b>PERFORMING</b><br/>Productivity<br/><i>High performance</i>"]
+  A["👋 <b>ADJOURNING</b><br/>Closure<br/><i>Disbanding</i>"]
+
+  F --> S --> N --> P --> A
+
+  S -.->|"Can regress<br/>with changes"| F
+
+  style F fill:#dbeafe,stroke:#2563eb
+  style S fill:#fef2f2,stroke:#dc2626
+  style N fill:#fef3c7,stroke:#b45309
+  style P fill:#dcfce7,stroke:#16a34a
+  style A fill:#ede9fe,stroke:#7c3aed
+  </pre>
+</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  subgraph performance ["📈 TEAM PERFORMANCE OVER TIME"]
+    direction LR
+    L1["Low<br/>Forming"] --> L2["Dip<br/>Storming"] --> L3["Rising<br/>Norming"] --> L4["Peak<br/>Performing"] --> L5["Decline<br/>Adjourning"]
+  end
+
+  subgraph leadership ["🎯 PM LEADERSHIP STYLE"]
+    direction LR
+    D["Directing"] --> C["Coaching"] --> S["Supporting"] --> DL["Delegating"] --> CL["Celebrating"]
+  end
+
+  style performance fill:#f0fdfa,stroke:#0d9488
+  style leadership fill:#ccfbf1,stroke:#0d9488
+  </pre>
+</div>
+
+<div class="section-title">📋 Detailed Stage Breakdown</div>
+<div class="stage-grid">
+  <div class="stage-card">
+    <div class="stage-num">Stage 1</div>
+    <h3>🌱 Forming</h3>
+    <div class="mood">"Who are these people? What are we doing?"</div>
+    <div class="section-label">Team Behaviors</div>
+    <ul>
+      <li>Polite, guarded, testing boundaries</li>
+      <li>Uncertain about roles and responsibilities</li>
+      <li>Dependent on the leader for direction</li>
+      <li>Low conflict (people are being careful)</li>
+      <li>Excitement mixed with anxiety</li>
+    </ul>
+    <div class="pm-action">
+      <div class="section-label">PM Actions (Directing)</div>
+      <ul>
+        <li>Provide clear direction and structure</li>
+        <li>Define roles, responsibilities, and ground rules</li>
+        <li>Set expectations and team charter</li>
+        <li>Facilitate introductions and team building</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <div class="stage-num">Stage 2</div>
+    <h3>⚡ Storming</h3>
+    <div class="mood">"I disagree. This isn't working. Who's in charge?"</div>
+    <div class="section-label">Team Behaviors</div>
+    <ul>
+      <li>Conflicts, power struggles, disagreements</li>
+      <li>Resistance to tasks and leadership</li>
+      <li>Frustration with processes and each other</li>
+      <li>Cliques and factions may form</li>
+      <li>Performance dips — this is the hardest stage</li>
+    </ul>
+    <div class="pm-action">
+      <div class="section-label">PM Actions (Coaching)</div>
+      <ul>
+        <li>Facilitate conflict resolution (Collaborate!)</li>
+        <li>Reinforce ground rules and shared goals</li>
+        <li>Coach individuals through disagreements</li>
+        <li>Don't avoid the conflict — work through it</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <div class="stage-num">Stage 3</div>
+    <h3>🤝 Norming</h3>
+    <div class="mood">"We're figuring this out. I trust these people."</div>
+    <div class="section-label">Team Behaviors</div>
+    <ul>
+      <li>Trust and cohesion developing</li>
+      <li>Roles and processes accepted</li>
+      <li>Open communication and feedback</li>
+      <li>Team identity forming</li>
+      <li>Constructive disagreement (healthy conflict)</li>
+    </ul>
+    <div class="pm-action">
+      <div class="section-label">PM Actions (Supporting)</div>
+      <ul>
+        <li>Step back — let the team self-organize more</li>
+        <li>Encourage collaboration and shared decisions</li>
+        <li>Recognize and reinforce positive behaviors</li>
+        <li>Focus on removing impediments</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <div class="stage-num">Stage 4</div>
+    <h3>🚀 Performing</h3>
+    <div class="mood">"We've got this. Let's deliver."</div>
+    <div class="section-label">Team Behaviors</div>
+    <ul>
+      <li>High productivity and autonomy</li>
+      <li>Self-organizing and self-managing</li>
+      <li>Problems solved quickly within the team</li>
+      <li>Strong mutual accountability</li>
+      <li>Focus on results and continuous improvement</li>
+    </ul>
+    <div class="pm-action">
+      <div class="section-label">PM Actions (Delegating)</div>
+      <ul>
+        <li>Delegate and empower — get out of the way</li>
+        <li>Focus on strategic issues, not daily tasks</li>
+        <li>Celebrate achievements</li>
+        <li>Maintain the environment, don't micromanage</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <div class="stage-num">Stage 5</div>
+    <h3>👋 Adjourning</h3>
+    <div class="mood">"It's ending. What did we learn?"</div>
+    <div class="section-label">Team Behaviors</div>
+    <ul>
+      <li>Sadness or relief as project ends</li>
+      <li>Anxiety about next assignment</li>
+      <li>Reflection on accomplishments</li>
+      <li>Knowledge transfer and documentation</li>
+    </ul>
+    <div class="pm-action">
+      <div class="section-label">PM Actions (Celebrating)</div>
+      <ul>
+        <li>Capture lessons learned</li>
+        <li>Recognize individual and team contributions</li>
+        <li>Facilitate smooth transition/release</li>
+        <li>Celebrate the team's achievements</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>Teams can regress.</strong> Adding/removing members, changing scope, or leadership changes can push a Performing team back to Forming or Storming.</p>
+  <p><strong>Storming is normal and necessary.</strong> Don't try to skip it. The PM's job is to help the team work through it, not avoid it.</p>
+  <p><strong>Not all teams reach Performing.</strong> Some get stuck in Storming or Norming. The PM's facilitation is critical.</p>
+  <p><strong>Exam pattern:</strong> "The team is having frequent arguments" → Storming. "The team is working well together but still needs guidance" → Norming. "The team is self-managing and highly productive" → Performing.</p>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#ccfbf1',primaryTextColor:'#1c1917',primaryBorderColor:'#0d9488',lineColor:'#0d9488',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 10-eco-overview.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>🗺️ ECO Domain Overview</h1>
+  <div class="subtitle">Exam Content Outline — All 3 domains, 35 tasks, and weightings</div>
+  <div class="domain-badge">The Exam Blueprint · Study This First</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0;color:var(--accent)">📊 Domain Weightings</div>
+<div class="stat-grid">
+  <div class="stat-card people"><div class="pct">42%</div><div class="label">People</div><div class="tasks">14 tasks · ~76 questions</div></div>
+  <div class="stat-card process"><div class="pct">50%</div><div class="label">Process</div><div class="tasks">17 tasks · ~90 questions</div></div>
+  <div class="stat-card biz"><div class="pct">8%</div><div class="label">Business Environment</div><div class="tasks">4 tasks · ~14 questions</div></div>
+</div>
+<div class="domain-bars">
+  <div class="people">People 42%</div>
+  <div class="process">Process 50%</div>
+  <div class="biz">Biz 8%</div>
+</div>
+
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart TD
+  ECO["📋 <b>Exam Content Outline</b><br/>3 Domains · 35 Tasks · Enablers"]
+  ECO --> P["👥 <b>PEOPLE (42%)</b><br/>14 Tasks<br/><i>Leadership, team, stakeholders</i>"]
+  ECO --> PR["⚙️ <b>PROCESS (50%)</b><br/>17 Tasks<br/><i>Planning, execution, delivery</i>"]
+  ECO --> B["🏢 <b>BUSINESS ENV (8%)</b><br/>4 Tasks<br/><i>Value, compliance, change</i>"]
+
+  P --> P1["Manage conflict"]
+  P --> P2["Lead a team"]
+  P --> P3["Support performance"]
+  P --> P4["Empower members"]
+  P --> P5["...10 more tasks"]
+
+  PR --> PR1["Execute with urgency"]
+  PR --> PR2["Manage communications"]
+  PR --> PR3["Plan scope/schedule/budget"]
+  PR --> PR4["Manage risks & quality"]
+  PR --> PR5["...13 more tasks"]
+
+  B --> B1["Manage compliance"]
+  B --> B2["Deliver benefits & value"]
+  B --> B3["Evaluate external changes"]
+  B --> B4["Support org change"]
+
+  style ECO fill:#fef3c7,stroke:#b45309
+  style P fill:#ede9fe,stroke:#7c3aed
+  style PR fill:#dbeafe,stroke:#2563eb
+  style B fill:#fce7f3,stroke:#be185d
+  </pre>
+</div>
+
+<div class="section-title people">👥 Domain I: People (42% · 14 Tasks)</div>
+<div class="task-grid">
+  <div class="task-item people"><div class="task-num">T1</div><div class="task-text"><strong>Manage Conflict</strong><span>5 resolution techniques · Thomas-Kilmann · Collaborate preferred</span></div></div>
+  <div class="task-item people"><div class="task-num">T2</div><div class="task-text"><strong>Lead a Team</strong><span>Servant leadership · Vision · Diversity · Leadership styles</span></div></div>
+  <div class="task-item people"><div class="task-num">T3</div><div class="task-text"><strong>Support Team Performance</strong><span>Appraisal · Feedback · Recognition · Growth</span></div></div>
+  <div class="task-item people"><div class="task-num">T4</div><div class="task-text"><strong>Empower Team Members</strong><span>Strengths · Accountability · Decision authority</span></div></div>
+  <div class="task-item people"><div class="task-num">T5</div><div class="task-text"><strong>Ensure Adequate Training</strong><span>Competency gaps · Training options · Budget · Outcomes</span></div></div>
+  <div class="task-item people"><div class="task-num">T6</div><div class="task-text"><strong>Build a Team</strong><span>Skills assessment · Resource needs · Tuckman's model</span></div></div>
+  <div class="task-item people"><div class="task-num">T7</div><div class="task-text"><strong>Address Impediments</strong><span>Identify · Prioritize · Escalate · Remove blockers</span></div></div>
+  <div class="task-item people"><div class="task-num">T8</div><div class="task-text"><strong>Negotiate Agreements</strong><span>Boundaries · Priorities · Win-win strategies</span></div></div>
+  <div class="task-item people"><div class="task-num">T9</div><div class="task-text"><strong>Collaborate with Stakeholders</strong><span>Engagement needs · Alignment · Trust building</span></div></div>
+  <div class="task-item people"><div class="task-num">T10</div><div class="task-text"><strong>Build Shared Understanding</strong><span>Root cause · Consensus · Resolve misunderstandings</span></div></div>
+  <div class="task-item people"><div class="task-num">T11</div><div class="task-text"><strong>Engage Virtual Teams</strong><span>Virtual team needs · Tools · Effectiveness</span></div></div>
+  <div class="task-item people"><div class="task-num">T12</div><div class="task-text"><strong>Define Team Ground Rules</strong><span>Working principles · Environment · Violations</span></div></div>
+  <div class="task-item people"><div class="task-num">T13</div><div class="task-text"><strong>Mentor Stakeholders</strong><span>Time allocation · Mentoring opportunities</span></div></div>
+  <div class="task-item people"><div class="task-num">T14</div><div class="task-text"><strong>Promote via Emotional Intelligence</strong><span>Personality indicators · Self-awareness · Adjustment</span></div></div>
+</div>
+
+<div class="section-title process">⚙️ Domain II: Process (50% · 17 Tasks)</div>
+<div class="task-grid">
+  <div class="task-item process"><div class="task-num">T1</div><div class="task-text"><strong>Execute with Urgency for Business Value</strong><span>Incremental delivery · MVP · Value-driven prioritization</span></div></div>
+  <div class="task-item process"><div class="task-num">T2</div><div class="task-text"><strong>Manage Communications</strong><span>Needs analysis · Methods · Confirmation of understanding</span></div></div>
+  <div class="task-item process"><div class="task-num">T3</div><div class="task-text"><strong>Assess and Manage Risks</strong><span>Risk options · Prioritization · Response strategies</span></div></div>
+  <div class="task-item process"><div class="task-num">T4</div><div class="task-text"><strong>Engage Stakeholders</strong><span>Analysis · Categorization · Engagement strategy</span></div></div>
+  <div class="task-item process"><div class="task-num">T5</div><div class="task-text"><strong>Plan and Manage Budget/Resources</strong><span>Estimation · Challenges · Monitoring · Variance</span></div></div>
+  <div class="task-item process"><div class="task-num">T6</div><div class="task-text"><strong>Plan and Manage Schedule</strong><span>Estimation · Benchmarks · Measurement · Modification</span></div></div>
+  <div class="task-item process"><div class="task-num">T7</div><div class="task-text"><strong>Plan and Manage Quality</strong><span>Standards · Improvements · Governance · QA vs QC</span></div></div>
+  <div class="task-item process"><div class="task-num">T8</div><div class="task-text"><strong>Plan and Manage Scope</strong><span>Requirements · WBS · Validation · Scope creep</span></div></div>
+  <div class="task-item process"><div class="task-num">T9</div><div class="task-text"><strong>Integrate Planning Activities</strong><span>Consolidation · Dependencies · Data analysis</span></div></div>
+  <div class="task-item process"><div class="task-num">T10</div><div class="task-text"><strong>Manage Project Changes</strong><span>Anticipate · Strategy · Change control · CCB</span></div></div>
+  <div class="task-item process"><div class="task-num">T11</div><div class="task-text"><strong>Plan and Manage Procurement</strong><span>Requirements · Suppliers · Contract types · Strategy</span></div></div>
+  <div class="task-item process"><div class="task-num">T12</div><div class="task-text"><strong>Manage Project Artifacts</strong><span>Requirements · Updates · Effectiveness · Traceability</span></div></div>
+  <div class="task-item process"><div class="task-num">T13</div><div class="task-text"><strong>Determine Methodology/Methods</strong><span>Assessment · Execution strategy · Agile/Predictive/Hybrid</span></div></div>
+  <div class="task-item process"><div class="task-num">T14</div><div class="task-text"><strong>Establish Governance Structure</strong><span>Governance framework · Escalation paths · Decision rights</span></div></div>
+  <div class="task-item process"><div class="task-num">T15</div><div class="task-text"><strong>Manage Project Issues</strong><span>Risk-to-issue transition · Resolution · Collaboration</span></div></div>
+  <div class="task-item process"><div class="task-num">T16</div><div class="task-text"><strong>Ensure Knowledge Transfer</strong><span>Responsibilities · Expectations · Approach · Lessons learned</span></div></div>
+  <div class="task-item process"><div class="task-num">T17</div><div class="task-text"><strong>Plan and Manage Closure</strong><span>Criteria · Readiness · Conclusion · Transition</span></div></div>
+</div>
+
+<div class="section-title biz">🏢 Domain III: Business Environment (8% · 4 Tasks)</div>
+<div class="task-grid">
+  <div class="task-item biz"><div class="task-num">T1</div><div class="task-text"><strong>Plan and Manage Compliance</strong><span>Requirements · Categories · Threats · Methods · Consequences</span></div></div>
+  <div class="task-item biz"><div class="task-num">T2</div><div class="task-text"><strong>Evaluate and Deliver Benefits/Value</strong><span>Identification · Ownership · Measurement · Delivery options</span></div></div>
+  <div class="task-item biz"><div class="task-num">T3</div><div class="task-text"><strong>Evaluate External Business Environment Changes</strong><span>Survey · Assess impact · Recommend options · Continuous review</span></div></div>
+  <div class="task-item biz"><div class="task-num">T4</div><div class="task-text"><strong>Support Organizational Change</strong><span>Assess culture · Evaluate impact · Determine actions · Sustain</span></div></div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>The ECO is the exam blueprint.</strong> Every question maps to a domain, task, and enabler. Study to the ECO, not the PMBOK.</p>
+  <p><strong>Enablers are illustrative, not exhaustive.</strong> The exam may test concepts beyond the listed enablers.</p>
+  <p><strong>People is the largest domain (42%).</strong> Don't underestimate it — servant leadership, conflict resolution, and stakeholder engagement dominate.</p>
+  <p><strong>~50% of questions involve agile/hybrid</strong> — spread across all three domains, not just Process.</p>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#fef3c7',primaryTextColor:'#1c1917',primaryBorderColor:'#b45309',lineColor:'#b45309',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 11-stakeholder-engagement.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>📡 Stakeholder Engagement Levels</h1>
+  <div class="subtitle">From Unaware to Leading — strategies to move stakeholders through each level</div>
+  <div class="domain-badge">People Domain (42%) · Stakeholder Management</div>
+</div>
+<div class="container">
+
+<div class="section-title" style="margin-top:0">📈 Engagement Level Progression</div>
+<div class="diagram-wrap">
+  <pre class="mermaid">
+flowchart LR
+  U["😶 <b>UNAWARE</b><br/>Doesn't know<br/>about the project"]
+  R["😠 <b>RESISTANT</b><br/>Aware but opposed<br/>to the project"]
+  N["😐 <b>NEUTRAL</b><br/>Aware but neither<br/>supportive nor opposed"]
+  S["😊 <b>SUPPORTIVE</b><br/>Aware and in favor<br/>of the project"]
+  L["🌟 <b>LEADING</b><br/>Actively engaged<br/>and championing"]
+
+  U -->|"Inform"| R
+  U -->|"Inform"| N
+  R -->|"Address concerns"| N
+  N -->|"Demonstrate value"| S
+  S -->|"Empower"| L
+
+  R -.->|"Can regress<br/>if ignored"| U
+  S -.->|"Can regress<br/>if neglected"| N
+
+  style U fill:#f5f5f4,stroke:#78716c
+  style R fill:#fef2f2,stroke:#dc2626
+  style N fill:#fef3c7,stroke:#b45309
+  style S fill:#dcfce7,stroke:#16a34a
+  style L fill:#dbeafe,stroke:#2563eb
+  </pre>
+</div>
+
+<div class="section-title">📋 Detailed Level Breakdown</div>
+<div class="level-grid">
+  <div class="level-card">
+    <div class="level-label">Level 1</div>
+    <h3>😶 Unaware</h3>
+    <div class="desc">Doesn't know the project exists or its potential impact on them.</div>
+    <div class="section-label">Characteristics</div>
+    <ul>
+      <li>No knowledge of the project</li>
+      <li>Cannot form an opinion yet</li>
+      <li>May be surprised by changes later</li>
+    </ul>
+    <div class="section-label">PM Strategy</div>
+    <ul>
+      <li>Identify them early (stakeholder analysis)</li>
+      <li>Communicate project existence and purpose</li>
+      <li>Explain how the project affects them</li>
+      <li>Move them to at least Neutral quickly</li>
+    </ul>
+  </div>
+
+  <div class="level-card">
+    <div class="level-label">Level 2</div>
+    <h3>😠 Resistant</h3>
+    <div class="desc">Aware of the project but opposed to it or its outcomes.</div>
+    <div class="section-label">Characteristics</div>
+    <ul>
+      <li>Actively or passively opposes the project</li>
+      <li>May spread negativity or block progress</li>
+      <li>Often fears change or loss of control</li>
+    </ul>
+    <div class="section-label">PM Strategy</div>
+    <ul>
+      <li>Understand their concerns (listen first!)</li>
+      <li>Address fears with facts and empathy</li>
+      <li>Involve them in decisions where possible</li>
+      <li>Find common ground and shared benefits</li>
+      <li>Don't ignore them — they won't go away</li>
+    </ul>
+  </div>
+
+  <div class="level-card">
+    <div class="level-label">Level 3</div>
+    <h3>😐 Neutral</h3>
+    <div class="desc">Aware of the project but neither supportive nor opposed.</div>
+    <div class="section-label">Characteristics</div>
+    <ul>
+      <li>Indifferent — "not my problem"</li>
+      <li>Won't actively help or hinder</li>
+      <li>May become resistant if negatively impacted</li>
+    </ul>
+    <div class="section-label">PM Strategy</div>
+    <ul>
+      <li>Demonstrate how the project benefits them</li>
+      <li>Keep them informed with regular updates</li>
+      <li>Invite participation in relevant decisions</li>
+      <li>Show quick wins to build momentum</li>
+    </ul>
+  </div>
+
+  <div class="level-card">
+    <div class="level-label">Level 4</div>
+    <h3>😊 Supportive</h3>
+    <div class="desc">Aware and in favor of the project and its outcomes.</div>
+    <div class="section-label">Characteristics</div>
+    <ul>
+      <li>Positive attitude toward the project</li>
+      <li>Willing to help when asked</li>
+      <li>Provides resources or political support</li>
+    </ul>
+    <div class="section-label">PM Strategy</div>
+    <ul>
+      <li>Keep them engaged and informed</li>
+      <li>Leverage their support for influence</li>
+      <li>Ask them to advocate to others</li>
+      <li>Don't take their support for granted</li>
+    </ul>
+  </div>
+
+  <div class="level-card">
+    <div class="level-label">Level 5</div>
+    <h3>🌟 Leading</h3>
+    <div class="desc">Actively engaged, championing the project, and influencing others.</div>
+    <div class="section-label">Characteristics</div>
+    <ul>
+      <li>Proactively advocates for the project</li>
+      <li>Influences other stakeholders positively</li>
+      <li>Removes organizational barriers</li>
+      <li>The project's biggest ally</li>
+    </ul>
+    <div class="section-label">PM Strategy</div>
+    <ul>
+      <li>Empower them as project champions</li>
+      <li>Give them visibility and recognition</li>
+      <li>Use them to influence resistant stakeholders</li>
+      <li>Keep them in the loop on key decisions</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title">📊 Power/Interest Grid</div>
+<div class="grid-y-label">↑ High Power</div>
+<div class="grid-container">
+  <div class="grid-cell">
+    <h4>Keep Satisfied</h4>
+    <p>High power, low interest. Keep them happy and informed but don't overwhelm with details. Can become blockers if dissatisfied.</p>
+  </div>
+  <div class="grid-cell">
+    <h4>Manage Closely</h4>
+    <p>High power, high interest. Your most important stakeholders. Engage actively, communicate frequently, involve in decisions.</p>
+  </div>
+  <div class="grid-cell">
+    <h4>Monitor</h4>
+    <p>Low power, low interest. Minimal effort. Keep informed via general communications. Watch for changes in power or interest.</p>
+  </div>
+  <div class="grid-cell">
+    <h4>Keep Informed</h4>
+    <p>Low power, high interest. Provide regular updates. They can be great advocates. May gain power over time.</p>
+  </div>
+</div>
+<div class="grid-labels"><span>← Low Interest</span><span>High Interest →</span></div>
+
+<div class="callout">
+  <div class="callout-title">💡 Exam Tips</div>
+  <p><strong>The Stakeholder Engagement Assessment Matrix</strong> shows current vs desired engagement level for each stakeholder. The gap tells you where to focus.</p>
+  <p><strong>Engagement is continuous.</strong> It's not a one-time activity — reassess throughout the project.</p>
+  <p><strong>Resistant ≠ enemy.</strong> PMI wants you to understand and address concerns, not ignore or overpower resistant stakeholders.</p>
+  <p><strong>Not all stakeholders need to be Leading.</strong> The goal is to move each stakeholder to the level needed for project success.</p>
+  <p><strong>Salience Model</strong> classifies stakeholders by power, urgency, and legitimacy. Know it exists but Power/Interest grid is more commonly tested.</p>
+</div>
+
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#fae8ff',primaryTextColor:'#1c1917',primaryBorderColor:'#c026d3',lineColor:'#c026d3',fontFamily:'system-ui, sans-serif',fontSize:'13px'},flowchart:{htmlLabels:true,curve:'basis',padding:15}});
+</script>
+
+<!-- ===== 12-brain-dump.html ===== -->
+<div class="sheet-break"></div>
+
+<div class="sheet-header">
+  <a class="back" href="index.html">← Back to Cheat Sheets</a>
+  <h1>⚡ Brain Dump Reference Card</h1>
+  <div class="subtitle">Everything to write on scratch paper in the first 5 minutes before starting questions</div>
+  <div class="domain-badge">Exam Day · Print This · Practice Writing in Under 5 Minutes</div>
+</div>
+<div class="container">
+
+<div class="timer-banner">
+  <div class="big">⏱ Target: Under 5 Minutes</div>
+  <p>Write this on your scratch paper before touching Question 1. Practice daily during your last 2 weeks of prep.</p>
+</div>
+
+<div class="dump-grid">
+
+  <!-- EVM FORMULAS -->
+  <div class="dump-section">
+    <h3>📊 EVM Formulas</h3>
+    <table>
+      <tr><th>Metric</th><th>Formula</th><th>Meaning</th></tr>
+      <tr><td>SV</td><td><code>EV − PV</code></td><td>− = behind sched</td></tr>
+      <tr><td>CV</td><td><code>EV − AC</code></td><td>− = over budget</td></tr>
+      <tr><td>SPI</td><td><code>EV / PV</code></td><td>&lt;1 = behind sched</td></tr>
+      <tr><td>CPI</td><td><code>EV / AC</code></td><td>&lt;1 = over budget</td></tr>
+      <tr><td>EAC (typ)</td><td><code>BAC / CPI</code></td><td>Default on exam</td></tr>
+      <tr><td>EAC (atyp)</td><td><code>AC + (BAC−EV)</code></td><td>One-time variance</td></tr>
+      <tr><td>EAC (both)</td><td><code>AC + (BAC−EV)/(CPI×SPI)</code></td><td>Both factors</td></tr>
+      <tr><td>ETC</td><td><code>EAC − AC</code></td><td>Cost to finish</td></tr>
+      <tr><td>VAC</td><td><code>BAC − EAC</code></td><td>− = over at end</td></tr>
+      <tr><td>TCPI</td><td><code>(BAC−EV) / (BAC−AC)</code></td><td>&gt;1 = must improve</td></tr>
+    </table>
+    <div class="note">EV is always first in variances and numerator in indices. P = schedule, C = cost.</div>
+  </div>
+
+  <!-- OTHER FORMULAS -->
+  <div class="dump-section">
+    <h3>📝 Other Key Formulas</h3>
+    <table>
+      <tr><th>Formula</th><th>Equation</th></tr>
+      <tr><td>Comm Channels</td><td><code>n(n−1) / 2</code></td></tr>
+      <tr><td>PERT</td><td><code>(O + 4M + P) / 6</code></td></tr>
+      <tr><td>Std Dev (σ)</td><td><code>(P − O) / 6</code></td></tr>
+      <tr><td>PTA (FPIF)</td><td><code>((CP−TP)/BSR) + TC</code></td></tr>
+    </table>
+    <div class="note">PERT: O=optimistic, M=most likely, P=pessimistic. PTA only for FPIF contracts.</div>
+  </div>
+
+  <!-- CONFLICT RESOLUTION -->
+  <div class="dump-section">
+    <h3>🤝 Conflict Resolution (PMI Order)</h3>
+    <ul>
+      <li><strong>1. Collaborate/Problem Solve</strong> — Win-win ⭐ PMI's #1</li>
+      <li><strong>2. Compromise</strong> — Each gives up something</li>
+      <li><strong>3. Smooth/Accommodate</strong> — Emphasize agreement</li>
+      <li><strong>4. Force/Direct</strong> — Emergency only</li>
+      <li><strong>5. Withdraw/Avoid</strong> — Temporary retreat</li>
+    </ul>
+  </div>
+
+  <!-- RISK RESPONSES -->
+  <div class="dump-section">
+    <h3>⚠️ Risk Response Strategies</h3>
+    <table>
+      <tr><th>Threats (−)</th><th>Opportunities (+)</th></tr>
+      <tr><td>Avoid</td><td>Exploit</td></tr>
+      <tr><td>Transfer</td><td>Share</td></tr>
+      <tr><td>Mitigate</td><td>Enhance</td></tr>
+      <tr><td colspan="2" style="text-align:center"><strong>Accept</strong> (both) · <strong>Escalate</strong> (both)</td></tr>
+    </table>
+  </div>
+
+  <!-- TUCKMAN -->
+  <div class="dump-section">
+    <h3>👥 Tuckman's Stages</h3>
+    <ul>
+      <li><strong>Forming</strong> → Polite, uncertain (PM: Direct)</li>
+      <li><strong>Storming</strong> → Conflict, power struggles (PM: Coach)</li>
+      <li><strong>Norming</strong> → Trust, cohesion (PM: Support)</li>
+      <li><strong>Performing</strong> → High productivity (PM: Delegate)</li>
+      <li><strong>Adjourning</strong> → Closure (PM: Celebrate)</li>
+    </ul>
+  </div>
+
+  <!-- CONTRACT TYPES -->
+  <div class="dump-section">
+    <h3>📝 Contract Types (Buyer Risk → Seller Risk)</h3>
+    <ul>
+      <li><strong>CPPC</strong> — Cost + % of cost (worst for buyer)</li>
+      <li><strong>CPFF</strong> — Cost + fixed fee</li>
+      <li><strong>CPIF</strong> — Cost + incentive fee</li>
+      <li><strong>T&M</strong> — Time & materials (shared)</li>
+      <li><strong>FPIF</strong> — Fixed price + incentive (PTA applies)</li>
+      <li><strong>FFP</strong> — Firm fixed price (worst for seller)</li>
+    </ul>
+  </div>
+
+  <!-- CHANGE CONTROL -->
+  <div class="dump-section">
+    <h3>📋 Change Control Process</h3>
+    <ul>
+      <li><strong>1.</strong> Change identified</li>
+      <li><strong>2.</strong> Assess impact (scope, schedule, cost, risk)</li>
+      <li><strong>3.</strong> Submit change request</li>
+      <li><strong>4.</strong> CCB reviews (approve/reject/defer)</li>
+      <li><strong>5.</strong> Update plans & baselines if approved</li>
+      <li><strong>6.</strong> Communicate decision</li>
+    </ul>
+    <div class="note">NEVER make the change immediately. ALWAYS assess first.</div>
+  </div>
+
+  <!-- PMI MINDSET -->
+  <div class="dump-section">
+    <h3>🧠 PMI Mindset Quick Rules</h3>
+    <ul>
+      <li>Servant leadership > authority</li>
+      <li>Assess before acting (always)</li>
+      <li>Follow the process (always)</li>
+      <li>Never gold plate</li>
+      <li>Ethics first (honesty, responsibility, respect, fairness)</li>
+      <li>Engage stakeholders early & continuously</li>
+      <li>Charter = PM's authority</li>
+      <li>Facilitate > Direct</li>
+    </ul>
+  </div>
+
+  <!-- 12 PRINCIPLES -->
+  <div class="dump-section full-width">
+    <h3>🧭 12 PMBOK 7 Principles</h3>
+    <table>
+      <tr><th>People (4)</th><th>Approach (4)</th><th>Outcome (4)</th></tr>
+      <tr><td>1. Stewardship</td><td>5. Systems Thinking</td><td>4. Value</td></tr>
+      <tr><td>2. Team</td><td>7. Tailoring</td><td>8. Quality</td></tr>
+      <tr><td>3. Stakeholders</td><td>9. Complexity</td><td>10. Risk</td></tr>
+      <tr><td>6. Leadership</td><td>11. Adaptability</td><td>12. Change</td></tr>
+    </table>
+  </div>
+
+  <!-- EXAM TIMING -->
+  <div class="dump-section full-width">
+    <h3>⏱ Exam Timing Reference</h3>
+    <table>
+      <tr><th>Detail</th><th>Value</th><th>Detail</th><th>Value</th></tr>
+      <tr><td>Questions</td><td><strong>180</strong> (175 scored)</td><td>Time per Q</td><td><strong>~76 seconds</strong></td></tr>
+      <tr><td>Total time</td><td><strong>230 minutes</strong></td><td>Break 1</td><td><strong>After Q60</strong> (10 min)</td></tr>
+      <tr><td>Domains</td><td>People 42% · Process 50% · Biz 8%</td><td>Break 2</td><td><strong>After Q120</strong> (10 min)</td></tr>
+    </table>
+    <div class="note">Read the LAST sentence first. Eliminate 2 wrong answers. Flag & move on if > 2 min. Take BOTH breaks. Don't change answers unless certain you misread.</div>
+  </div>
+
+</div>
+
+<div class="callout">
+  <div class="callout-title">🎯 Practice Plan</div>
+  <p><strong>Last 2 weeks:</strong> Practice writing this entire brain dump from memory every day. Time yourself — target under 5 minutes.</p>
+  <p><strong>Exam day:</strong> Write it on scratch paper during the tutorial/survey time before Q1. This frees your working memory for scenario analysis.</p>
+  <p><strong>Print this page</strong> and keep it next to your study materials for daily practice.</p>
+</div>
+
+</div>
+
+
+<script>
+mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+        primaryColor: '#fef3c7',
+        primaryTextColor: '#1c1917',
+        primaryBorderColor: '#b45309',
+        lineColor: '#78716c',
+        secondaryColor: '#dbeafe',
+        tertiaryColor: '#dcfce7',
+        fontFamily: 'system-ui, sans-serif',
+        fontSize: '13px'
+    },
+    flowchart: { htmlLabels: true, curve: 'basis', padding: 15 }
+});
+</script>
+
+</body>
+</html>
