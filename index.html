@@ -7,10 +7,14 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#b45309;
-  --accent-light:#fef3c7;--border:#e7e5e4;--sidebar-bg:#f5f5f4;
+  --bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#003B71;
+  --accent-light:#e8f0fa;--border:#e7e5e4;--sidebar-bg:#f5f5f4;
   --card-bg:#fff;--success:#16a34a;--page-max:780px;
 }
+html.dark{--bg:#1a1a2e;--fg:#e4e4e7;--muted:#a1a1aa;--accent:#5b9bd5;--accent-light:#1e3a5f;--border:#2d2d44;--sidebar-bg:#16162a;--card-bg:#23233a;}
+html.dark #content tr:nth-child(even){background:#1e1e32}
+html.dark .callout{border-color:#5b9bd5}
+html.dark .key-point{background:#1a2e1a;border-color:#16a34a}
 html{font-size:17px;scroll-behavior:smooth}
 body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:var(--bg);line-height:1.75;display:flex;min-height:100vh}
 
@@ -47,7 +51,7 @@ body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:va
 #content td{padding:.45rem .7rem;border-bottom:1px solid var(--border)}
 #content tr:nth-child(even){background:#fafaf9}
 #content code{background:var(--accent-light);padding:.15rem .35rem;border-radius:4px;font-size:.85rem;font-family:'Consolas','Courier New',monospace}
-.callout{background:var(--accent-light);border:1px solid #fbbf24;border-radius:8px;padding:1rem 1.2rem;margin:1.2rem 0}
+.callout{background:var(--accent-light);border:1px solid #C69214;border-radius:8px;padding:1rem 1.2rem;margin:1.2rem 0}
 .callout-title{font-weight:700;font-family:system-ui,sans-serif;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
 .key-point{background:#ecfdf5;border-left:4px solid var(--success);padding:.6rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:.95rem}
 
@@ -76,7 +80,8 @@ body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:va
 <button id="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
 <nav id="sidebar">
   <h1>📘 PMP Study Book</h1>
-  <div class="subtitle">Week 1: Foundation</div>
+  <div class="subtitle">Complete Study Guide</div>
+  <button id="theme-toggle" onclick="toggleTheme()" style="width:100%;padding:.4rem;border:1px solid var(--border);border-radius:6px;background:var(--card-bg);cursor:pointer;font-size:.75rem;font-family:system-ui,sans-serif;margin-bottom:1rem;color:var(--fg)">🌙 Dark Mode</button>
   <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
   <div class="progress-text" id="progress-text">0 / 0 pages read</div>
   <div id="toc"></div>
@@ -120,6 +125,16 @@ function goToPage(idx) {
   currentPage = idx;
   render();
   document.getElementById('sidebar').classList.remove('open');
+}
+function toggleTheme() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('pmp-theme', isDark ? 'dark' : 'light');
+  document.getElementById('theme-toggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+// Apply saved theme
+if (localStorage.getItem('pmp-theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+  document.getElementById('theme-toggle').textContent = '☀️ Light Mode';
 }
 function render() {
   const page = defined_pages[currentPage];
