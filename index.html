@@ -9,16 +9,30 @@
 :root{
   --bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#003B71;
   --accent-light:#e8f0fa;--border:#e7e5e4;--sidebar-bg:#f5f5f4;
-  --card-bg:#fff;--success:#16a34a;--page-max:780px;
+  --card-bg:#fff;--success:#16a34a;--page-max:780px;--gold:#C69214;
 }
-html.dark{--bg:#1a1a2e;--fg:#e4e4e7;--muted:#a1a1aa;--accent:#5b9bd5;--accent-light:#1e3a5f;--border:#2d2d44;--sidebar-bg:#16162a;--card-bg:#23233a;}
+html.dark{
+  --bg:#1a1a2e;--fg:#e4e4e7;--muted:#a1a1aa;--accent:#5b9bd5;
+  --accent-light:#1e3a5f;--border:#2d2d44;--sidebar-bg:#16162a;
+  --card-bg:#23233a;--gold:#e0a82e;
+}
 html.dark #content tr:nth-child(even){background:#1e1e32}
-html.dark .callout{border-color:#5b9bd5}
-html.dark .key-point{background:#1a2e1a;border-color:#16a34a}
+html.dark #content td{color:var(--fg);border-color:var(--border)}
+html.dark #content th{background:var(--accent)}
+html.dark .callout{background:var(--accent-light);border-color:var(--gold);color:var(--fg)}
+html.dark .callout-title{color:var(--accent)}
+html.dark .key-point{background:#1a2e1a;border-color:#16a34a;color:var(--fg)}
+html.dark #content blockquote{background:var(--accent-light);color:var(--fg)}
+html.dark #content code{background:var(--accent-light);color:var(--fg)}
+html.dark #content strong{color:var(--fg)}
+html.dark #content em{color:var(--muted)}
+html.dark #nav-bar button{background:var(--card-bg);color:var(--fg);border-color:var(--border)}
+html.dark #nav-bar button:hover{background:var(--accent);color:#fff}
+html.dark #nav-bar button:disabled{background:var(--card-bg);color:var(--muted)}
+html.dark #mark-read.is-read{background:var(--card-bg)!important;color:var(--success)!important}
+html.dark #menu-toggle{background:var(--card-bg);color:var(--fg);border-color:var(--border)}
 html{font-size:17px;scroll-behavior:smooth}
 body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:var(--bg);line-height:1.75;display:flex;min-height:100vh}
-
-/* Sidebar */
 #sidebar{width:300px;min-width:300px;background:var(--sidebar-bg);border-right:1px solid var(--border);padding:1.2rem;overflow-y:auto;position:fixed;top:0;left:0;bottom:0;z-index:100;transition:transform .3s}
 #sidebar h1{font-size:1.1rem;color:var(--accent);margin-bottom:.3rem;font-family:system-ui,sans-serif}
 #sidebar .subtitle{font-size:.75rem;color:var(--muted);margin-bottom:1rem;font-family:system-ui,sans-serif}
@@ -31,12 +45,8 @@ body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:va
 .toc-item.active{background:var(--accent-light);color:var(--accent);font-weight:600}
 .toc-item .check{width:14px;height:14px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.55rem}
 .toc-item.read .check{border-color:var(--success);background:var(--success);color:#fff}
-
-/* Main */
 #main{margin-left:300px;flex:1;display:flex;flex-direction:column;min-height:100vh}
 #content{max-width:var(--page-max);margin:0 auto;padding:2.5rem 2rem 4rem;flex:1;width:100%}
-
-/* Typography */
 #content h1{font-size:1.8rem;margin-bottom:.5rem;color:var(--accent);line-height:1.3}
 #content h2{font-size:1.35rem;margin-top:2rem;margin-bottom:.6rem;color:var(--fg);border-bottom:2px solid var(--accent-light);padding-bottom:.3rem}
 #content h3{font-size:1.1rem;margin-top:1.5rem;margin-bottom:.4rem;color:var(--accent)}
@@ -45,28 +55,24 @@ body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:va
 #content li{margin-bottom:.35rem}
 #content strong{color:var(--fg)}
 #content em{color:var(--muted)}
-#content blockquote{border-left:4px solid var(--accent);padding:.8rem 1rem;margin:1rem 0;background:var(--accent-light);border-radius:0 8px 8px 0;font-style:italic}
+#content blockquote{border-left:4px solid var(--accent);padding:.8rem 1rem;margin:1rem 0;background:var(--accent-light);border-radius:0 8px 8px 0;font-style:italic;color:var(--fg)}
 #content table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
 #content th{background:var(--accent);color:#fff;padding:.5rem .7rem;text-align:left;font-family:system-ui,sans-serif;font-size:.8rem}
-#content td{padding:.45rem .7rem;border-bottom:1px solid var(--border)}
+#content td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--fg)}
 #content tr:nth-child(even){background:#fafaf9}
-#content code{background:var(--accent-light);padding:.15rem .35rem;border-radius:4px;font-size:.85rem;font-family:'Consolas','Courier New',monospace}
-.callout{background:var(--accent-light);border:1px solid #C69214;border-radius:8px;padding:1rem 1.2rem;margin:1.2rem 0}
+#content code{background:var(--accent-light);color:var(--fg);padding:.15rem .35rem;border-radius:4px;font-size:.85rem;font-family:'Consolas','Courier New',monospace}
+.callout{background:var(--accent-light);border:1px solid var(--gold);border-radius:8px;padding:1rem 1.2rem;margin:1.2rem 0;color:var(--fg)}
 .callout-title{font-weight:700;font-family:system-ui,sans-serif;font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
-.key-point{background:#ecfdf5;border-left:4px solid var(--success);padding:.6rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:.95rem}
-
-/* Nav bar */
+.key-point{background:#ecfdf5;border-left:4px solid var(--success);padding:.6rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:.95rem;color:var(--fg)}
 #nav-bar{position:sticky;bottom:0;background:var(--card-bg);border-top:1px solid var(--border);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:system-ui,sans-serif;z-index:50}
-#nav-bar button{padding:.5rem 1.2rem;border:1px solid var(--border);border-radius:6px;background:var(--card-bg);cursor:pointer;font-size:.85rem;font-family:system-ui,sans-serif;transition:all .15s}
+#nav-bar button{padding:.5rem 1.2rem;border:1px solid var(--border);border-radius:6px;background:var(--card-bg);color:var(--fg);cursor:pointer;font-size:.85rem;font-family:system-ui,sans-serif;transition:all .15s}
 #nav-bar button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 #nav-bar button:disabled{opacity:.3;cursor:default;background:var(--card-bg);color:var(--fg)}
 #nav-bar .page-info{font-size:.8rem;color:var(--muted)}
 #mark-read{background:var(--success)!important;color:#fff!important;border-color:var(--success)!important}
 #mark-read:hover{opacity:.85}
 #mark-read.is-read{background:var(--card-bg)!important;color:var(--success)!important;border-color:var(--success)!important}
-
-/* Mobile */
-#menu-toggle{display:none;position:fixed;top:.8rem;left:.8rem;z-index:200;background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:.4rem .6rem;cursor:pointer;font-size:1.1rem}
+#menu-toggle{display:none;position:fixed;top:.8rem;left:.8rem;z-index:200;background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:.4rem .6rem;cursor:pointer;font-size:1.1rem;color:var(--fg)}
 @media(max-width:800px){
   #sidebar{transform:translateX(-100%)}
   #sidebar.open{transform:translateX(0)}
@@ -101,80 +107,18 @@ body{font-family:'Georgia','Times New Roman',serif;color:var(--fg);background:va
 if (typeof additional_pages !== 'undefined') { defined_pages.push(...additional_pages); }
 let currentPage = 0;
 const STORAGE_KEY = 'pmp-study-book-progress';
-
-function getReadPages() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; }
-}
-function setReadPages(arr) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-}
-function isRead(idx) { return getReadPages().includes(idx); }
-function toggleRead() {
-  const arr = getReadPages();
-  const i = arr.indexOf(currentPage);
-  if (i > -1) arr.splice(i, 1); else arr.push(currentPage);
-  setReadPages(arr);
-  renderTOC();
-  updateNav();
-}
-function navigate(dir) {
-  const next = currentPage + dir;
-  if (next >= 0 && next < defined_pages.length) { currentPage = next; render(); }
-}
-function goToPage(idx) {
-  currentPage = idx;
-  render();
-  document.getElementById('sidebar').classList.remove('open');
-}
-function toggleTheme() {
-  const isDark = document.documentElement.classList.toggle('dark');
-  localStorage.setItem('pmp-theme', isDark ? 'dark' : 'light');
-  document.getElementById('theme-toggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-}
-// Apply saved theme
-if (localStorage.getItem('pmp-theme') === 'dark') {
-  document.documentElement.classList.add('dark');
-  document.getElementById('theme-toggle').textContent = '☀️ Light Mode';
-}
-function render() {
-  const page = defined_pages[currentPage];
-  document.getElementById('content').innerHTML = page.html;
-  window.scrollTo({top: 0});
-  updateNav();
-  renderTOC();
-}
-function updateNav() {
-  document.getElementById('btn-prev').disabled = currentPage === 0;
-  document.getElementById('btn-next').disabled = currentPage === defined_pages.length - 1;
-  document.getElementById('page-info').textContent = `Page ${currentPage + 1} of ${defined_pages.length}`;
-  const mr = document.getElementById('mark-read');
-  if (isRead(currentPage)) { mr.textContent = '✓ Read'; mr.classList.add('is-read'); }
-  else { mr.textContent = 'Mark as Read ✓'; mr.classList.remove('is-read'); }
-}
-function renderTOC() {
-  let html = '';
-  let lastChapter = '';
-  const readArr = getReadPages();
-  const total = defined_pages.length;
-  const readCount = readArr.length;
-  defined_pages.forEach((p, i) => {
-    if (p.chapter !== lastChapter) {
-      html += `<div class="toc-chapter">${p.chapter}</div>`;
-      lastChapter = p.chapter;
-    }
-    const active = i === currentPage ? ' active' : '';
-    const read = readArr.includes(i) ? ' read' : '';
-    html += `<div class="toc-item${active}${read}" onclick="goToPage(${i})"><span class="check">${readArr.includes(i)?'✓':''}</span>${p.title}</div>`;
-  });
-  document.getElementById('toc').innerHTML = html;
-  document.getElementById('progress-fill').style.width = `${(readCount/total*100).toFixed(0)}%`;
-  document.getElementById('progress-text').textContent = `${readCount} / ${total} pages read`;
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') navigate(1);
-  if (e.key === 'ArrowLeft') navigate(-1);
-});
-// Initialize
+function getReadPages(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch(e){return[]}}
+function setReadPages(arr){localStorage.setItem(STORAGE_KEY,JSON.stringify(arr))}
+function isRead(idx){return getReadPages().includes(idx)}
+function toggleRead(){const arr=getReadPages();const i=arr.indexOf(currentPage);if(i>-1)arr.splice(i,1);else arr.push(currentPage);setReadPages(arr);renderTOC();updateNav()}
+function navigate(dir){const next=currentPage+dir;if(next>=0&&next<defined_pages.length){currentPage=next;render()}}
+function goToPage(idx){currentPage=idx;render();document.getElementById('sidebar').classList.remove('open')}
+function toggleTheme(){const isDark=document.documentElement.classList.toggle('dark');localStorage.setItem('pmp-theme',isDark?'dark':'light');document.getElementById('theme-toggle').textContent=isDark?'☀️ Light Mode':'🌙 Dark Mode'}
+if(localStorage.getItem('pmp-theme')==='dark'){document.documentElement.classList.add('dark');document.getElementById('theme-toggle').textContent='☀️ Light Mode'}
+function render(){const page=defined_pages[currentPage];document.getElementById('content').innerHTML=page.html;window.scrollTo({top:0});updateNav();renderTOC()}
+function updateNav(){document.getElementById('btn-prev').disabled=currentPage===0;document.getElementById('btn-next').disabled=currentPage===defined_pages.length-1;document.getElementById('page-info').textContent=`Page ${currentPage+1} of ${defined_pages.length}`;const mr=document.getElementById('mark-read');if(isRead(currentPage)){mr.textContent='✓ Read';mr.classList.add('is-read')}else{mr.textContent='Mark as Read ✓';mr.classList.remove('is-read')}}
+function renderTOC(){let html='';let lastChapter='';const readArr=getReadPages();const total=defined_pages.length;const readCount=readArr.length;defined_pages.forEach((p,i)=>{if(p.chapter!==lastChapter){html+=`<div class="toc-chapter">${p.chapter}</div>`;lastChapter=p.chapter}const active=i===currentPage?' active':'';const read=readArr.includes(i)?' read':'';html+=`<div class="toc-item${active}${read}" onclick="goToPage(${i})"><span class="check">${readArr.includes(i)?'✓':''}</span>${p.title}</div>`});document.getElementById('toc').innerHTML=html;document.getElementById('progress-fill').style.width=`${(readCount/total*100).toFixed(0)}%`;document.getElementById('progress-text').textContent=`${readCount} / ${total} pages read`}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')navigate(1);if(e.key==='ArrowLeft')navigate(-1)});
 render();
 </script>
 </body>
