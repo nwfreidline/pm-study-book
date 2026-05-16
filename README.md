@@ -2,7 +2,7 @@
 
 A free, comprehensive, interactive study guide for the **PMP (Project Management Professional)** certification exam.
 
-**[→ Start Studying](https://nwfreidline.github.io/pm-study-book/)** · **[→ Crash Course](https://nwfreidline.github.io/pm-study-book/crash-course/)** · **[→ Take the Quiz](https://nwfreidline.github.io/pm-study-book/quiz.html)** · **[→ Cheat Sheets](https://nwfreidline.github.io/pm-study-book/cheat-sheets/)**
+**[→ Start Studying](https://nwfreidline.github.io/pm-study-book/)** · **[→ Crash Course](https://nwfreidline.github.io/pm-study-book/crash-course/)** · **[→ Practice Exam](https://nwfreidline.github.io/pm-study-book/practice-exam.html)** · **[→ Quiz](https://nwfreidline.github.io/pm-study-book/quiz.html)** · **[→ Cheat Sheets](https://nwfreidline.github.io/pm-study-book/cheat-sheets/)**
 
 ---
 
@@ -13,6 +13,21 @@ A self-contained HTML study book, quiz app, and visual cheat sheet collection co
 Built from the PMBOK Guide 7th Edition, the PMI Exam Content Outline, and the most recommended community study resources.
 
 **Design:** PMI-inspired navy/gold color theme with dark mode toggle on every page. Consistent experience across all tools.
+
+## 🎯 Practice Exam Simulator (NEW)
+
+A full-length PMP exam simulation that mirrors the real testing experience.
+
+**[→ Take a Practice Exam](https://nwfreidline.github.io/pm-study-book/practice-exam.html)**
+
+- **180 questions** randomly selected with correct domain weighting (42% People / 50% Process / 8% Business)
+- **230-minute countdown timer** with visual warning when time is low
+- **Two optional 10-minute breaks** after Q60 and Q120 (exam timer pauses)
+- **Question flagging** and full navigation grid (jump to any question)
+- **Review screen** before submission showing answered/unanswered/flagged counts
+- **Pass/fail scoring** at ~61% threshold with domain-level proficiency ratings (Above Target / Target / Below Target / Needs Improvement)
+- **Full answer review** after submission with explanations, filterable by incorrect/flagged
+- Supports both single-answer and multi-response questions
 
 ## 🚀 Crash Course — Final Review
 
@@ -55,8 +70,6 @@ A comprehensive **29-page crash course** designed for your final days of study b
 
 ## 🧠 Question Bank (255 Questions)
 
-A comprehensive question bank designed to mirror the real PMP exam experience:
-
 | Domain | Questions | Weight | Exam Target |
 |--------|-----------|--------|-------------|
 | People | 102 | 40% | 42% |
@@ -64,18 +77,14 @@ A comprehensive question bank designed to mirror the real PMP exam experience:
 | Business Environment | 26 | 10% | 8% |
 | **Total** | **255** | | |
 
-**Features:**
-- Mix of single-answer and multiple-response (select 2) questions — just like the real exam
+- Mix of single-answer and multiple-response (select 2) questions
 - Three difficulty levels: foundational, intermediate, advanced/scenario-heavy
 - Topic tags for targeted study (leadership, agile, EVM, risk, conflict, etc.)
 - Detailed explanations for every answer
-- Built-in utility to generate randomized 180-question practice exams with correct domain distribution
-
-**🚧 Coming Soon:** Full practice exam simulator — 180 questions, 230-minute countdown, breaks after Q60/Q120, pass/fail scoring with domain breakdown.
 
 ## 📋 Visual Cheat Sheets
 
-12 visual quick-reference guides for last-stage exam preparation, built with interactive Mermaid.js diagrams. Print-friendly. Dark mode supported.
+12 visual quick-reference guides with interactive Mermaid.js diagrams. Print-friendly. Dark mode supported.
 
 **[→ Browse All Cheat Sheets](https://nwfreidline.github.io/pm-study-book/cheat-sheets/)**
 
@@ -102,34 +111,31 @@ A comprehensive question bank designed to mirror the real PMP exam experience:
 - Mobile-responsive layouts
 - Print-friendly CSS
 
+**Practice Exam:**
+- Full 180-question simulation with 230-minute timer
+- Breaks after Q60 and Q120 (timer pauses)
+- Question flagging and navigation grid
+- Pass/fail scoring with domain proficiency levels
+- Complete answer review with explanations
+
 **Study Book:**
 - 39 pages of exam-ready content across 13 chapters
-- Sidebar table of contents with chapter groupings
-- Page-by-page navigation (click, arrow keys, or buttons)
-- "Mark as Read" progress tracking (saved in your browser)
-- Clean serif typography designed for extended reading
+- Sidebar navigation with progress tracking
+- Keyboard navigation (arrow keys)
 
 **Crash Course:**
-- 29 pages of condensed, high-density review content
-- Visual flow diagrams and decision trees
-- Formula boxes with worked examples
+- 29 pages of condensed final review content
+- Visual flow diagrams and formula boxes
 - Same interactive format with progress tracking
-- Designed for final 2-3 days before the exam
 
 **Quiz App:**
 - 50-question diagnostic quiz with instant feedback
-- Select answer → check → see detailed explanation
-- Question flagging for review
-- Running timer
 - Domain-specific scoring breakdown
-- Full review of incorrect answers with explanations
-- Retake functionality
+- Full review of incorrect answers
 
 **Cheat Sheets:**
 - 12 visual quick-reference guides with Mermaid.js diagrams
-- Flowcharts, mind maps, decision trees, and color-coded cards
 - Combined print version (all 12 in one document)
-- Self-contained HTML — works in any browser
 
 ## How to Use
 
@@ -141,15 +147,15 @@ Visit **[nwfreidline.github.io/pm-study-book](https://nwfreidline.github.io/pm-s
 2. Open `index.html` in any browser
 
 ```
-index.html              ← Study book reader (39 pages, dark mode)
-crash-course/           ← Comprehensive crash course (29 pages, final review)
-quiz.html               ← Quiz app (50-question diagnostic, dark mode)
-quiz-bank.js            ← Full 255-question bank (all domains, multi-response)
-quiz-data.js            ← Diagnostic quiz questions
+index.html              ← Study book reader (39 pages)
+practice-exam.html      ← Full exam simulator (180Q, timed, scored)
+crash-course/           ← Comprehensive crash course (29 pages)
+quiz.html               ← Diagnostic quiz (50 questions)
+quiz-bank.js            ← Full 255-question bank
 pages.js                ← Study content (Ch 1-8)
 pages-continued.js      ← Study content (Ch 8-13)
 cheat-sheets/           ← 12 visual cheat sheets + combined print version
-docs/                   ← Reference materials (formulas, agile, study plan)
+docs/                   ← Reference materials (formulas, study plan)
 week-1/                 ← Week 1 detailed study materials (markdown)
 ```
 
@@ -171,8 +177,8 @@ week-1/                 ← Week 1 detailed study materials (markdown)
 - [x] 255-question bank with explanations
 - [x] 12 visual cheat sheets
 - [x] Dark mode + PMI theme across all pages
-- [ ] **Practice exam simulator** (180Q, timed, breaks, scoring) — in progress
-- [ ] Connect quiz to full 255-question bank with filters
+- [x] **Practice exam simulator** (180Q, timed, breaks, scoring)
+- [ ] Connect diagnostic quiz to full 255-question bank with filters
 - [ ] Weeks 2-8 deep-dive study materials
 - [ ] Expand question bank to 500+
 
