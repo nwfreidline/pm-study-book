@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Practice Exam Simulator</title>
+<style>
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--accent:#003B71;--accent-light:#e8f0fa;--border:#e7e5e4;--card:#fff;--success:#16a34a;--error:#dc2626;--gold:#C69214;--flag:#f59e0b}
+html.dark{--bg:#1a1a2e;--fg:#e4e4e7;--muted:#a1a1aa;--accent:#5b9bd5;--accent-light:#1e3a5f;--border:#2d2d44;--card:#23233a;--gold:#e0a82e;--flag:#fbbf24}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;line-height:1.6;transition:background .3s,color .3s}
+button{cursor:pointer;font-family:inherit}
+.hidden{display:none!important}
+.theme-toggle{position:fixed;top:1rem;right:1rem;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:all .2s}
+.theme-toggle:hover{background:var(--accent-light)}
+#start-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center}
+#start-screen h1{font-size:2.2rem;color:var(--accent);margin-bottom:.3rem}
+.subtitle{color:var(--gold);font-weight:600;font-size:1rem;margin-bottom:1.5rem}
+.exam-desc{color:var(--muted);margin-bottom:1.5rem;max-width:520px;font-size:.92rem}
+.info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;max-width:560px;margin-bottom:1.5rem;width:100%}
+.info-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.info-item strong{display:block;color:var(--accent);font-size:1.4rem}
+.info-item span{color:var(--muted);font-size:.78rem}
+.domain-dist{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;max-width:560px;width:100%;margin-bottom:2rem;text-align:left}
+.domain-dist h3{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.8rem}
+.domain-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
+.domain-row .label{font-size:.88rem;width:160px;flex-shrink:0}
+.domain-row .bar-wrap{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.domain-row .bar-fill{height:100%;border-radius:4px}
+.domain-row .pct{font-size:.78rem;color:var(--muted);width:36px;text-align:right}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:.85rem 2.5rem;border-radius:8px;font-size:1.05rem;font-weight:600;transition:opacity .2s}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{background:var(--card);color:var(--fg);border:1px solid var(--border);padding:.55rem 1.3rem;border-radius:8px;font-size:.88rem;font-weight:500;transition:all .15s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+#top-bar{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:.6rem 1.5rem;display:none;align-items:center;justify-content:space-between;gap:.8rem}
+#top-bar.active{display:flex}
+.tb-left{display:flex;align-items:center;gap:1rem}
+.tb-counter{font-size:.85rem;font-weight:600;color:var(--accent)}
+.tb-timer{font-size:.92rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:.3rem}
+.tb-timer.warning{color:var(--error);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.tb-right{display:flex;align-items:center;gap:.5rem}
+.btn-sm{padding:.35rem .7rem;border-radius:6px;font-size:.78rem;border:1px solid var(--border);background:var(--card);color:var(--fg);transition:all .15s}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm.flagged{background:#fef3c7;border-color:var(--flag);color:#92400e}
+html.dark .btn-sm.flagged{background:#422006;border-color:var(--flag);color:var(--flag)}
+.q-container{max-width:760px;margin:0 auto;padding:1.5rem}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+.q-num{font-size:.76rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.q-badges{display:flex;gap:.4rem;align-items:center}
+.q-domain{font-size:.7rem;padding:.2rem .55rem;border-radius:4px;background:var(--accent-light);color:var(--accent);font-weight:600}
+.q-multi{font-size:.7rem;padding:.2rem .55rem;border-radius:4px;background:#fef3c7;color:#92400e;font-weight:600}
+html.dark .q-multi{background:#422006;color:var(--flag)}
+.q-text{font-size:1rem;margin-bottom:1.2rem;line-height:1.7}
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option{display:flex;align-items:flex-start;gap:.7rem;padding:.7rem 1rem;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s;font-size:.92rem;line-height:1.5}
+.option:hover{border-color:var(--accent);background:var(--accent-light)}
+.option.selected{border-color:var(--accent);background:var(--accent-light)}
+.option.correct{border-color:var(--success);background:#f0fdf4}
+.option.incorrect{border-color:var(--error);background:#fef2f2}
+html.dark .option.correct{background:#052e16}
+html.dark .option.incorrect{background:#450a0a}
+.option.disabled{pointer-events:none;opacity:.6}
+.option.disabled.correct{opacity:1}
+.option .marker{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;transition:all .15s}
+.option .marker.checkbox{border-radius:5px}
+.option.selected .marker{border-color:var(--accent);background:var(--accent);color:#fff}
+.option.correct .marker{border-color:var(--success);background:var(--success);color:#fff}
+.option.incorrect .marker{border-color:var(--error);background:var(--error);color:#fff}
+.explanation{margin-top:1rem;padding:1rem 1.2rem;border-radius:8px;font-size:.88rem;line-height:1.6}
+.explanation.right{background:#f0fdf4;border:1px solid #bbf7d0}
+.explanation.wrong{background:#fef2f2;border:1px solid #fecaca}
+html.dark .explanation.right{background:#052e16;border-color:#166534}
+html.dark .explanation.wrong{background:#450a0a;border-color:#991b1b}
+.nav-row{display:flex;justify-content:space-between;align-items:center;max-width:760px;margin:0 auto;padding:0 1.5rem 1.5rem}
+.q-grid{max-width:760px;margin:0 auto;padding:0 1.5rem 2rem}
+.q-grid h4{font-size:.8rem;color:var(--muted);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.03em}
+.grid-wrap{display:flex;flex-wrap:wrap;gap:4px}
+.grid-cell{width:28px;height:28px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all .12s;background:var(--border);color:var(--muted)}
+.grid-cell.answered{background:var(--accent);color:#fff}
+.grid-cell.flagged{background:var(--flag);color:#fff}
+.grid-cell.current{border-color:var(--fg)}
+.grid-cell:hover{transform:scale(1.15)}
+/* Break Screen */
+#break-screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;padding:2rem;text-align:center}
+#break-screen h2{font-size:1.6rem;color:var(--accent);margin-bottom:.5rem}
+#break-screen p{color:var(--muted);margin-bottom:1.5rem;max-width:400px}
+.break-timer{font-size:2.5rem;font-weight:800;color:var(--gold);margin-bottom:1.5rem}
+/* Review Screen */
+#review-screen{display:none;max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+#review-screen h2{font-size:1.5rem;color:var(--accent);margin-bottom:1rem}
+.review-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.review-stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.review-stat .val{font-size:1.8rem;font-weight:800}
+.review-stat .lbl{font-size:.78rem;color:var(--muted)}
+.review-stat .val.green{color:var(--success)}
+.review-stat .val.red{color:var(--error)}
+.review-stat .val.orange{color:var(--flag)}
+.review-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.5rem}
+/* Results Screen */
+#results-screen{display:none;max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2.5rem;text-align:center;margin-bottom:2rem}
+.results-card h2{font-size:1.5rem;color:var(--accent);margin-bottom:.3rem}
+.score-big{font-size:3.5rem;font-weight:800;margin:.5rem 0}
+.score-big.pass{color:var(--success)}
+.score-big.fail{color:var(--error)}
+.pass-fail{font-size:1.1rem;font-weight:600;margin-bottom:1rem;padding:.4rem 1rem;border-radius:6px;display:inline-block}
+.pass-fail.pass{background:#f0fdf4;color:var(--success)}
+.pass-fail.fail{background:#fef2f2;color:var(--error)}
+html.dark .pass-fail.pass{background:#052e16}
+html.dark .pass-fail.fail{background:#450a0a}
+.score-detail{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+.domain-results{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem}
+.domain-result{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem}
+.domain-result .name{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:.3rem}
+.domain-result .score{font-size:1.6rem;font-weight:700}
+.domain-result .prof{font-size:.72rem;font-weight:600;margin-top:.2rem;padding:.15rem .4rem;border-radius:3px;display:inline-block}
+.prof.at{background:#f0fdf4;color:var(--success)}
+.prof.t{background:#fef3c7;color:#92400e}
+.prof.bt{background:#fef2f2;color:var(--error)}
+.prof.ni{background:#fef2f2;color:var(--error)}
+html.dark .prof.at{background:#052e16}
+html.dark .prof.t{background:#422006}
+html.dark .prof.bt{background:#450a0a}
+html.dark .prof.ni{background:#450a0a}
+/* Answer Review */
+.answer-review{margin-top:2rem}
+.answer-review h3{font-size:1.1rem;color:var(--accent);margin-bottom:1rem}
+.ar-filters{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.ar-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin-bottom:.8rem}
+.ar-item .ar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.ar-item .ar-qnum{font-size:.75rem;font-weight:700;color:var(--accent)}
+.ar-item .ar-result{font-size:.72rem;font-weight:600;padding:.15rem .4rem;border-radius:3px}
+.ar-item .ar-result.correct{background:#f0fdf4;color:var(--success)}
+.ar-item .ar-result.incorrect{background:#fef2f2;color:var(--error)}
+html.dark .ar-item .ar-result.correct{background:#052e16}
+html.dark .ar-item .ar-result.incorrect{background:#450a0a}
+.ar-item .ar-q{font-size:.9rem;margin-bottom:.6rem;line-height:1.5}
+.ar-item .ar-answer{font-size:.82rem;margin-bottom:.2rem}
+.ar-item .ar-answer.yours{color:var(--error)}
+.ar-item .ar-answer.right{color:var(--success);font-weight:600}
+.ar-item .ar-explain{font-size:.82rem;color:var(--muted);margin-top:.4rem;padding-top:.4rem;border-top:1px solid var(--border);line-height:1.5}
+@media(max-width:600px){
+  .info-grid{grid-template-columns:1fr}
+  .domain-results{grid-template-columns:1fr}
+  .review-stats{grid-template-columns:1fr}
+  #top-bar{padding:.5rem .8rem}
+  .q-container{padding:1rem}
+  .q-card{padding:1.2rem}
+  .nav-row{padding:0 1rem 1rem}
+  .q-grid{padding:0 1rem 2rem}
+  .grid-cell{width:24px;height:24px;font-size:.6rem}
+}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+<div id="top-bar">
+  <div class="tb-left">
+    <span class="tb-counter" id="tbCounter">Q 1/180</span>
+    <span class="tb-timer" id="tbTimer">⏱ 3:50:00</span>
+  </div>
+  <div class="tb-right">
+    <button class="btn-sm" id="flagBtn" onclick="toggleFlag()">🏳 Flag</button>
+    <button class="btn-sm" onclick="showReview()">📋 Review</button>
+    <button class="btn-sm" onclick="endExam()">End Exam</button>
+  </div>
+</div>
+<div id="start-screen"></div>
+<div id="exam-screen"></div>
+<div id="break-screen"></div>
+<div id="review-screen"></div>
+<div id="results-screen"></div>
+<script src="quiz-bank.js"></script>
+<script>
+'use strict';
+
+// ─── State ───
+let questions = [];
+let answers = [];       // -1 = unanswered, index for single, Set for multi
+let flagged = new Set();
+let currentQ = 0;
+let examStarted = false;
+let examFinished = false;
+let timerSeconds = 230 * 60; // 230 minutes
+let timerInterval = null;
+let timerPaused = false;
+let onBreak = false;
+let breakTimer = null;
+let breakSeconds = 0;
+
+// ─── DOM refs ───
+const app = {
+  start: document.getElementById('start-screen'),
+  exam: document.getElementById('exam-screen'),
+  brk: document.getElementById('break-screen'),
+  review: document.getElementById('review-screen'),
+  results: document.getElementById('results-screen'),
+  topBar: document.getElementById('top-bar'),
+  tbCounter: document.getElementById('tbCounter'),
+  tbTimer: document.getElementById('tbTimer'),
+  flagBtn: document.getElementById('flagBtn'),
+  themeBtn: document.getElementById('themeToggle')
+};
+
+// ─── Theme ───
+function initTheme() {
+  const saved = localStorage.getItem('pmp-theme');
+  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme:dark)').matches)) {
+    document.documentElement.classList.add('dark');
+    app.themeBtn.textContent = '☀️';
+  }
+}
+app.themeBtn.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  const isDark = document.documentElement.classList.contains('dark');
+  localStorage.setItem('pmp-theme', isDark ? 'dark' : 'light');
+  app.themeBtn.textContent = isDark ? '☀️' : '🌙';
+});
+initTheme();
+
+// ─── Start Screen ───
+function renderStart() {
+  hideAll();
+  app.start.style.display = 'flex';
+  app.start.innerHTML = `
+    <h1>PMP Practice Exam</h1>
+    <div class="subtitle">Full-Length Simulation</div>
+    <p class="exam-desc">Simulate the real PMP exam experience with 180 questions, timed breaks, and domain-weighted scoring. Good luck!</p>
+    <div class="info-grid">
+      <div class="info-item"><strong>180</strong><span>Questions</span></div>
+      <div class="info-item"><strong>230</strong><span>Minutes</span></div>
+      <div class="info-item"><strong>2</strong><span>Breaks</span></div>
+    </div>
+    <div class="domain-dist">
+      <h3>Domain Distribution</h3>
+      <div class="domain-row"><span class="label">People</span><div class="bar-wrap"><div class="bar-fill" style="width:42%;background:var(--accent)"></div></div><span class="pct">42%</span></div>
+      <div class="domain-row"><span class="label">Process</span><div class="bar-wrap"><div class="bar-fill" style="width:50%;background:var(--gold)"></div></div><span class="pct">50%</span></div>
+      <div class="domain-row"><span class="label">Business Env.</span><div class="bar-wrap"><div class="bar-fill" style="width:8%;background:var(--success)"></div></div><span class="pct">8%</span></div>
+    </div>
+    <button class="btn-primary" onclick="startExam()">Start Exam</button>
+  `;
+}
+
+// ─── Exam Logic ───
+function startExam() {
+  questions = selectExamQuestions(180);
+  answers = questions.map(q => q.type === 'multi' ? new Set() : -1);
+  flagged = new Set();
+  currentQ = 0;
+  examStarted = true;
+  examFinished = false;
+  timerSeconds = 230 * 60;
+  startTimer();
+  renderQuestion();
+}
+
+function hideAll() {
+  app.start.style.display = 'none';
+  app.exam.style.display = 'none';
+  app.brk.style.display = 'none';
+  app.review.style.display = 'none';
+  app.results.style.display = 'none';
+  app.topBar.classList.remove('active');
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    if (timerPaused) return;
+    timerSeconds--;
+    updateTimerDisplay();
+    if (timerSeconds <= 0) {
+      clearInterval(timerInterval);
+      endExam();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const h = Math.floor(timerSeconds / 3600);
+  const m = Math.floor((timerSeconds % 3600) / 60);
+  const s = timerSeconds % 60;
+  const str = `⏱ ${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  app.tbTimer.textContent = str;
+  app.tbTimer.classList.toggle('warning', timerSeconds < 300);
+}
+
+function isAnswered(idx) {
+  const a = answers[idx];
+  if (questions[idx].type === 'multi') return a.size > 0;
+  return a !== -1;
+}
+
+function getAnsweredCount() {
+  return answers.filter((a, i) => isAnswered(i)).length;
+}
+
+// ─── Question Rendering ───
+function renderQuestion() {
+  hideAll();
+  app.exam.style.display = 'block';
+  app.topBar.classList.add('active');
+
+  const q = questions[currentQ];
+  const isMulti = q.type === 'multi';
+  const letters = ['A','B','C','D','E','F'];
+  const isFlagged = flagged.has(currentQ);
+
+  // Update top bar
+  app.tbCounter.textContent = `Q ${currentQ + 1} / ${questions.length}`;
+  updateTimerDisplay();
+  app.flagBtn.textContent = isFlagged ? '🚩 Flagged' : '🏳 Flag';
+  app.flagBtn.className = 'btn-sm' + (isFlagged ? ' flagged' : '');
+
+  // Options
+  let optHtml = q.o.map((opt, i) => {
+    let cls = 'option';
+    if (isMulti) {
+      if (answers[currentQ].has(i)) cls += ' selected';
+    } else {
+      if (answers[currentQ] === i) cls += ' selected';
+    }
+    const markerCls = isMulti ? 'marker checkbox' : 'marker';
+    const markerContent = isMulti ? (answers[currentQ].has(i) ? '✓' : '') : letters[i];
+    return `<div class="${cls}" onclick="selectOption(${i})"><span class="${markerCls}">${markerContent}</span><span>${opt}</span></div>`;
+  }).join('');
+
+  // Multi hint
+  const multiHint = isMulti ? `<span class="q-multi">Select ${Array.isArray(q.a) ? q.a.length : 2}</span>` : '';
+
+  app.exam.innerHTML = `
+    <div class="q-container">
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-num">Question ${currentQ + 1} of ${questions.length}</span>
+          <div class="q-badges">
+            <span class="q-domain">${q.d}</span>
+            ${multiHint}
+          </div>
+        </div>
+        <div class="q-text">${q.q}</div>
+        <div class="options">${optHtml}</div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-secondary" onclick="navPrev()" ${currentQ === 0 ? 'disabled' : ''}>← Previous</button>
+      <button class="btn-secondary" onclick="navNext()">${currentQ < questions.length - 1 ? 'Next →' : 'Review & Submit'}</button>
+    </div>
+    <div class="q-grid">
+      <h4>Question Navigator</h4>
+      <div class="grid-wrap">${renderGrid()}</div>
+    </div>
+  `;
+}
+
+function renderGrid() {
+  let html = '';
+  for (let i = 0; i < questions.length; i++) {
+    let cls = 'grid-cell';
+    if (i === currentQ) cls += ' current';
+    if (flagged.has(i)) cls += ' flagged';
+    else if (isAnswered(i)) cls += ' answered';
+    html += `<div class="${cls}" onclick="navTo(${i})">${i + 1}</div>`;
+  }
+  return html;
+}
+
+// ─── Selection ───
+function selectOption(idx) {
+  const q = questions[currentQ];
+  if (q.type === 'multi') {
+    const set = answers[currentQ];
+    if (set.has(idx)) set.delete(idx);
+    else set.add(idx);
+  } else {
+    answers[currentQ] = idx;
+  }
+  renderQuestion();
+}
+
+// ─── Navigation ───
+function navPrev() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function navNext() {
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    // Check for breaks after Q60 and Q120
+    if (currentQ === 60 || currentQ === 120) {
+      offerBreak();
+      return;
+    }
+    renderQuestion();
+  } else {
+    showReview();
+  }
+}
+
+function navTo(idx) {
+  currentQ = idx;
+  if (app.review.style.display !== 'none') {
+    renderQuestion();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ─── Flagging ───
+function toggleFlag() {
+  if (flagged.has(currentQ)) flagged.delete(currentQ);
+  else flagged.add(currentQ);
+  renderQuestion();
+}
+
+// ─── Break ───
+function offerBreak() {
+  hideAll();
+  app.brk.style.display = 'flex';
+  timerPaused = true;
+  breakSeconds = 600; // 10 minutes
+
+  app.brk.innerHTML = `
+    <h2>Optional Break</h2>
+    <p>You've completed ${currentQ} questions. Take up to 10 minutes to rest. The exam timer is paused.</p>
+    <div class="break-timer" id="breakTimerDisplay">10:00</div>
+    <div style="display:flex;gap:1rem">
+      <button class="btn-primary" onclick="skipBreak()">Skip Break</button>
+      <button class="btn-secondary" onclick="startBreakTimer()">Start Break</button>
+    </div>
+  `;
+}
+
+function startBreakTimer() {
+  const display = document.getElementById('breakTimerDisplay');
+  clearInterval(breakTimer);
+  breakTimer = setInterval(() => {
+    breakSeconds--;
+    const m = Math.floor(breakSeconds / 60);
+    const s = breakSeconds % 60;
+    display.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+    if (breakSeconds <= 0) {
+      clearInterval(breakTimer);
+      skipBreak();
+    }
+  }, 1000);
+  // Replace buttons with end break button
+  app.brk.querySelector('div:last-child').innerHTML = `<button class="btn-primary" onclick="skipBreak()">End Break</button>`;
+}
+
+function skipBreak() {
+  clearInterval(breakTimer);
+  timerPaused = false;
+  renderQuestion();
+}
+
+// ─── Review Screen ───
+function showReview() {
+  hideAll();
+  app.review.style.display = 'block';
+  app.topBar.classList.add('active');
+  timerPaused = false;
+
+  const answered = getAnsweredCount();
+  const unanswered = questions.length - answered;
+  const flaggedCount = flagged.size;
+
+  let flaggedList = '';
+  if (flaggedCount > 0) {
+    flaggedList = '<div style="margin-bottom:1rem"><h4 style="font-size:.82rem;color:var(--muted);margin-bottom:.5rem">Flagged Questions</h4><div style="display:flex;flex-wrap:wrap;gap:4px">';
+    flagged.forEach(i => {
+      flaggedList += `<div class="grid-cell flagged" onclick="navTo(${i})">${i + 1}</div>`;
+    });
+    flaggedList += '</div></div>';
+  }
+
+  let unansweredList = '';
+  const unansweredIdxs = answers.map((a, i) => isAnswered(i) ? -1 : i).filter(i => i >= 0);
+  if (unansweredIdxs.length > 0) {
+    unansweredList = '<div style="margin-bottom:1rem"><h4 style="font-size:.82rem;color:var(--muted);margin-bottom:.5rem">Unanswered Questions</h4><div style="display:flex;flex-wrap:wrap;gap:4px">';
+    unansweredIdxs.forEach(i => {
+      unansweredList += `<div class="grid-cell" onclick="navTo(${i})">${i + 1}</div>`;
+    });
+    unansweredList += '</div></div>';
+  }
+
+  app.review.innerHTML = `
+    <h2>Exam Review</h2>
+    <div class="review-stats">
+      <div class="review-stat"><div class="val green">${answered}</div><div class="lbl">Answered</div></div>
+      <div class="review-stat"><div class="val red">${unanswered}</div><div class="lbl">Unanswered</div></div>
+      <div class="review-stat"><div class="val orange">${flaggedCount}</div><div class="lbl">Flagged</div></div>
+    </div>
+    ${flaggedList}
+    ${unansweredList}
+    <div class="review-actions">
+      <button class="btn-secondary" onclick="navTo(${currentQ})">← Back to Exam</button>
+      <button class="btn-primary" onclick="submitExam()">Submit Exam</button>
+    </div>
+    <div class="q-grid">
+      <h4>All Questions</h4>
+      <div class="grid-wrap">${renderGrid()}</div>
+    </div>
+  `;
+}
+
+// ─── End / Submit ───
+function endExam() {
+  if (!examFinished && !confirm('Are you sure you want to end the exam? You cannot return to questions after submission.')) return;
+  submitExam();
+}
+
+function submitExam() {
+  clearInterval(timerInterval);
+  examFinished = true;
+  renderResults();
+}
+
+// ─── Results ───
+function renderResults() {
+  hideAll();
+  app.results.style.display = 'block';
+
+  let correct = 0;
+  const domainStats = { People: {c:0,t:0}, Process: {c:0,t:0}, "Business Environment": {c:0,t:0} };
+
+  questions.forEach((q, i) => {
+    if (!domainStats[q.d]) domainStats[q.d] = {c:0,t:0};
+    domainStats[q.d].t++;
+    if (isCorrect(i)) { correct++; domainStats[q.d].c++; }
+  });
+
+  const pct = Math.round(correct / questions.length * 100);
+  const passed = pct >= 61;
+
+  let domainHtml = Object.entries(domainStats).map(([name, s]) => {
+    const dp = s.t > 0 ? Math.round(s.c / s.t * 100) : 0;
+    const prof = dp > 80 ? ['Above Target','at'] : dp >= 61 ? ['Target','t'] : dp >= 40 ? ['Below Target','bt'] : ['Needs Improvement','ni'];
+    return `<div class="domain-result">
+      <div class="name">${name}</div>
+      <div class="score">${dp}%</div>
+      <div style="font-size:.72rem;color:var(--muted)">${s.c}/${s.t} correct</div>
+      <div class="prof ${prof[1]}">${prof[0]}</div>
+    </div>`;
+  }).join('');
+
+  const elapsed = (230 * 60) - timerSeconds;
+  const mins = Math.floor(elapsed / 60);
+
+  app.results.innerHTML = `
+    <div class="results-card">
+      <h2>Exam Complete</h2>
+      <div class="score-big ${passed ? 'pass' : 'fail'}">${pct}%</div>
+      <div class="pass-fail ${passed ? 'pass' : 'fail'}">${passed ? '✓ PASS' : '✗ FAIL'}</div>
+      <div class="score-detail">${correct} of ${questions.length} correct · ${mins} minutes elapsed</div>
+      <div class="domain-results">${domainHtml}</div>
+    </div>
+    <div class="answer-review">
+      <h3>Answer Review</h3>
+      <div class="ar-filters">
+        <button class="btn-sm" onclick="filterReview('all')">All</button>
+        <button class="btn-sm" onclick="filterReview('incorrect')">Incorrect Only</button>
+        <button class="btn-sm" onclick="filterReview('flagged')">Flagged</button>
+      </div>
+      <div id="reviewList">${renderAnswerReview('all')}</div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;padding-bottom:2rem">
+      <button class="btn-primary" onclick="renderStart()">Take Another Exam</button>
+    </div>
+  `;
+}
+
+function isCorrect(idx) {
+  const q = questions[idx];
+  const a = answers[idx];
+  if (q.type === 'multi') {
+    if (!(a instanceof Set)) return false;
+    const correct = new Set(q.a);
+    if (a.size !== correct.size) return false;
+    for (const v of a) { if (!correct.has(v)) return false; }
+    return true;
+  }
+  return a === q.a;
+}
+
+function renderAnswerReview(filter) {
+  const letters = ['A','B','C','D','E','F'];
+  let html = '';
+  questions.forEach((q, i) => {
+    const correct = isCorrect(i);
+    if (filter === 'incorrect' && correct) return;
+    if (filter === 'flagged' && !flagged.has(i)) return;
+
+    const resultCls = correct ? 'correct' : 'incorrect';
+    const resultTxt = correct ? '✓ Correct' : '✗ Incorrect';
+
+    let yourAnswer = '';
+    if (q.type === 'multi') {
+      const sel = answers[i] instanceof Set ? [...answers[i]] : [];
+      yourAnswer = sel.length > 0 ? sel.map(x => letters[x]).join(', ') : '(unanswered)';
+    } else {
+      yourAnswer = answers[i] >= 0 ? `${letters[answers[i]]} — ${q.o[answers[i]]}` : '(unanswered)';
+    }
+
+    let correctAnswer = '';
+    if (q.type === 'multi') {
+      correctAnswer = q.a.map(x => `${letters[x]} — ${q.o[x]}`).join('; ');
+    } else {
+      correctAnswer = `${letters[q.a]} — ${q.o[q.a]}`;
+    }
+
+    html += `<div class="ar-item">
+      <div class="ar-head">
+        <span class="ar-qnum">Q${i+1} · ${q.d}</span>
+        <span class="ar-result ${resultCls}">${resultTxt}</span>
+      </div>
+      <div class="ar-q">${q.q}</div>
+      ${!correct ? `<div class="ar-answer yours">Your answer: ${yourAnswer}</div>` : ''}
+      <div class="ar-answer right">Correct: ${correctAnswer}</div>
+      <div class="ar-explain">${q.e}</div>
+    </div>`;
+  });
+  return html || '<p style="color:var(--muted);font-size:.9rem">No questions match this filter.</p>';
+}
+
+function filterReview(type) {
+  document.getElementById('reviewList').innerHTML = renderAnswerReview(type);
+}
+
+// ─── Init ───
+renderStart();
+</script>
+</body>
+</html>
